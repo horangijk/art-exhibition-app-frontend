@@ -1,33 +1,183 @@
 .App {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+}
+
+/* one column for SIDEBAR and another column for MAIN CONTAINER */
+.lower-half {
+  display: grid;
+  grid-template-columns: 15% 1fr;
+}
+
+.sidebar {
+  /* display: grid; */
+  /* width: 15%; */
+  height: 100%;
+  float: left;
+  background-color: black;
+  /* background-image: linear-gradient(-130deg, #e30050, #960035); */
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  display: grid;
+  /* background-color: #ff8800; */
+  background: linear-gradient(-120deg, #e66465, #9198e5);
+  text-align: right;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navbar-menu {
+  /* margin-right: 35px; */
+  padding: 15px;
+}
+
+.navbar-options {
+  font-family: 'Fjalla One';
+  src: url('./FjallaOne-Regular.ttf');
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  margin-right: 35px;
+}
+
+#index-header {
+  font-family: 'Fjalla One';
+  src: url('./FjallaOne-Regular.ttf');
+  font-size: 30px;
+  /* color: #ff8800; */
+  color: white;
+  background-color: black;
+  padding: 0px 20px 0px 20px;
+  text-decoration: none;
+}
+
+.search {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.neighborhood-filter {
+  color: white;
+  text-align: left;
+  font-family: 'Berthold Akzidenz Grotesk';
+  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-medium.woff');
+  font-size: 14px;
+
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.media-select {
+  /* display: grid; */
+  color: white;
+  text-align: left;
+  font-family: 'Fjalla One';
+  src: url('./FjallaOne-Regular.ttf');
+  font-size: 18px;
+
+  padding: 10px;
+  padding-top: 20px;
+}
+
+
+.menu-header {
+  font-family: 'Fjalla One';
+  src: url('./FjallaOne-Regular.ttf');
+  font-size: 28px;
+  font-weight: 700;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-container {
+  display: grid;
+  /* background-image: url('https://images.freecreatives.com/wp-content/uploads/2015/04/white-wall-600x450.png');
+  background-repeat: repeat; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* container for IMAGE CONTAINER and EXHIBITION LIST */
+.content {
+  display: grid;
+  grid-template-rows: 540px 1fr;
+  width: 100%;
+  height: 100%;
+  float: left;
+  background-image: url('./egg_shell.png');
+  background-repeat: repeat;
+}
+
+
+.image-container {
+  display: grid;
+  background-color: gray;
+}
+
+.exhibition-container {
+  display: grid;
+  /* grid-template-rows: 20px 1fr; */
+  /* display: block; */
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.index-container {
+  display: grid;
+  grid-template-rows: 30px 1fr;
+  background-image: url('./egg_shell.png');
+  background-repeat: repeat;
+}
+
+.exhibition-header {
+  display: grid;
+  color: black;
+  font-family: 'Fjalla One';
+  font-size: 40px;
+  font-weight: normal;
+  src: url('./FjallaOne-Regular.ttf');
+  /* margin-right: auto; */
+}
+
+.exhibition-list {
+  /* display: grid; */
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.checkbox-input {
+  line-height: 1.4;
+}
+
+.card {
+  display: inline-block;
+  height: 240px;
+}
+
+.card-container {
+  justify-content: center;
+  text-align: left;
+  display: grid;
+  height: 250px;
+}
+
+.card-info {
+  display: grid;
+  grid-template-rows: 150px 20px;
+  margin-top: 5px;
+  color: black;
+}
+
+.card-name {
+  font-family: 'Berthold Akzidenz Grotesk';
+  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-bold.woff');
+  font-size: 17px;
+  text-align: left;
+  display: inline-block;
+}
+
+.card-area {
+  font-family: 'Berthold Akzidenz Grotesk';
+  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-light.woff');
+  font-style: italic;
+  font-size: 14px;
+  text-align: left;
+  display: inline-block;
 }
