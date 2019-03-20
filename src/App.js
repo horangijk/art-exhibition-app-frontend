@@ -19,17 +19,19 @@ class App extends Component {
   state = {
     searchedExhibitions: this.props.exhibitions,
     checkedExhibitions: this.props.exhibitions,
-    searchTerm: ''
+    searchTerm: '',
+    inputType: ''
   }
 
-  changeHandler = (event) => {
+  searchHandler = (event) => {
     let searchedExhibitions = this.props.exhibitions.filter(exhib => {
       return exhib.name.toLowerCase().includes(event.target.value)
     })
     console.log(searchedExhibitions);
     this.setState({
       searchTerm: event.target.value,
-      searchedExhibitions: searchedExhibitions
+      searchedExhibitions: searchedExhibitions,
+      inputType: 'search'
     })
   }
 
@@ -38,7 +40,8 @@ class App extends Component {
       return exhib.venue_area.includes(event.target.name)
     })
     this.setState({
-      checkedExhibitions: checkedExhibitions
+      checkedExhibitions: checkedExhibitions,
+      inputType: 'checkbox'
     })
   }
 // -------------------------------------
@@ -67,7 +70,7 @@ class App extends Component {
 
                 <div className='search'>
                   <form>
-                    <input value={this.state.searchTerm} onChange={this.changeHandler}/>
+                    <input type='search' value={this.state.searchTerm} onChange={this.searchHandler}/>
                     <Link to='/index'><input type='submit'/></Link>
                   </form>
                 </div>
@@ -128,7 +131,11 @@ class App extends Component {
                 <Route path='/login' component={LoginForm} />
                 <Route path='/register' component={SignupForm} />
                 <Route path='/index' render={()=>{
-                  return <IndexPage checkedExhibitions={this.checkedExhibitions} searchedExhibitions={this.state.searchedExhibitions}/>
+                  return <IndexPage searchedExhibitions={
+                    this.state.inputType === 'checkbox' ? this.state.checkedExhibitions
+                    : this.state.inputType === 'search' ? this.state.searchedExhibitions
+                    : this.props.exhibitions
+                  }/>
                 }} />
               </Switch>
             </div>
@@ -141,7 +148,7 @@ class App extends Component {
     );
   }
 }
-
+// this.state.inputType === 'checkbox' ? this.state.checkedExhibitions : this.state.searchedExhibitions
 
 
 

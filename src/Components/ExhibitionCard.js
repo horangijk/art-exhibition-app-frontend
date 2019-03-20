@@ -43,7 +43,7 @@ class ExhibitionCard extends Component {
           >
             <div className='card-info'>
               <div>
-                <h3 className="card-name">{exhibitionName}</h3>
+                <h3 className="card-name">{exhibitionName}</h3><br/>
                 <label className="card-area">Location: {this.props.exhibition.venue_area}</label>
               </div>
               <div>

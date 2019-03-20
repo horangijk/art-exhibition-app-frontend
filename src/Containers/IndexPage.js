@@ -18,11 +18,7 @@ class IndexPage extends Component {
   // }
 
   render() {
-    let exhibitionList1 = this.props.searchedExhibitions.map(exObj => {
-      return <Link to={`/index/${exObj.id}`} key={exObj.id}><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
-    })
-
-    let exhibitionList2 = this.props.checkedExhibitions.map(exObj => {
+    let exhibitionList = this.props.searchedExhibitions.map(exObj => {
       return <Link to={`/index/${exObj.id}`} key={exObj.id}><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
     })
 
@@ -35,7 +31,7 @@ class IndexPage extends Component {
               return <div className='index-container'>
                   <h3 className='exhibition-header'>NYC EXHIBITIONS</h3>
                 <div className='exhibition-list'>
-                  {exhibitionList1}
+                  {exhibitionList}
                 </div>
 
               </div>
