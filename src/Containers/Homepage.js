@@ -28,18 +28,10 @@ class Homepage extends Component {
     return (
       <div className='content'>
         <div className='image-container'>
-
-          <Box
-            p={5}
-            fontSize={4}
-            width={[ 1, 1, 1 ]}
-            color='white'
-            bg='gray'>
-            Box
-
-          </Box>
-
-
+          <div id='logo-and-subheader'>
+            <h1 id='logo'>Placard</h1>
+            <h5 id='subheader'>New Yorker Resource for Exhibitions</h5>
+          </div>
         </div>
 
         <div className='exhibition-container'>

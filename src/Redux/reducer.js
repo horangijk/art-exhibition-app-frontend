@@ -4,7 +4,9 @@ const initialState = {
   exhibitions: [],
   user: {},
   loggedInUser: {},
-  selectedExhibition: {}
+  selectedExhibition: {},
+  filteredExhibitions: [],
+  searchTerm: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +26,10 @@ const reducer = (state = initialState, action) => {
 
     case "GET_EXHIB_INFO": {
       return {...state, selectedExhibition: action.payload}
+    }
+
+    case "FILTER_EXHIBITIONS": {
+      return {...state, filteredExhibitions: action.payload}
     }
 
     default:

@@ -12,6 +12,8 @@ export const getExhibitions = () => dispatch => {
     .then(data => dispatch(loadExhibitions(data)))
     .catch(console.error)
 }
+
+
 // -----------------------------------------------------
 
 

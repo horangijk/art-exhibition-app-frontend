@@ -22,13 +22,14 @@
 .navbar {
   display: grid;
   /* background-color: #ff8800; */
-  background: linear-gradient(-120deg, #e66465, #9198e5);
+  background: linear-gradient(-45deg, #FF0040, #0e5782);
   text-align: right;
 }
 
 .navbar-menu {
   /* margin-right: 35px; */
-  padding: 15px;
+  /* padding: 15px; */
+  margin: 12px 35px 0px 0px;
 }
 
 .navbar-options {
@@ -108,7 +109,9 @@
 
 .image-container {
   display: grid;
-  background-color: gray;
+  background-image: url('./museum-stock-photo-1.png');
+  background-position: 50% 72%;
+  /* opacity: 0.8; */
 }
 
 .exhibition-container {
@@ -180,4 +183,48 @@
   font-size: 14px;
   text-align: left;
   display: inline-block;
+}
+
+.card-remaining {
+  font-family: 'Berthold Akzidenz Grotesk';
+  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-light.woff');
+  font-style: italic;
+  font-size: 14px;
+  text-align: left;
+  display: inline-block;
+}
+
+/* #img-homepage {
+  transform: scale(0.4);
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  overflow: hidden;
+  opacity: 0.8;
+} */
+
+#logo {
+  font-family: 'Playfair';
+  font-size: 250px;
+  /* background: -webkit-linear-gradient(-135deg, #FF0040, #0e5782);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  color: black;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin: auto;
+}
+
+#subheader {
+  font-family: 'Berthold Akzidenz Grotesk';
+  font-size: 35px;
+  color: black;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+#logo-and-subheader {
+  display: grid;
+  grid-template-rows: 200px 1fr;
+  margin: auto;
 }

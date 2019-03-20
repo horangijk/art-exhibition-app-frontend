@@ -15,9 +15,38 @@ import { showExhibitionInfo } from './Redux/actions.js'
 
 
 class App extends Component {
-  render() {
-console.log(this.props.selectedExhibition)
 
+  state = {
+    searchedExhibitions: this.props.exhibitions,
+    checkedExhibitions: this.props.exhibitions,
+    searchTerm: ''
+  }
+
+  changeHandler = (event) => {
+    let searchedExhibitions = this.props.exhibitions.filter(exhib => {
+      return exhib.name.toLowerCase().includes(event.target.value)
+    })
+    console.log(searchedExhibitions);
+    this.setState({
+      searchTerm: event.target.value,
+      searchedExhibitions: searchedExhibitions
+    })
+  }
+
+  checkHandler = (event) => {
+    let checkedExhibitions = this.props.exhibitions.filter(exhib => {
+      return exhib.venue_area.includes(event.target.name)
+    })
+    this.setState({
+      checkedExhibitions: checkedExhibitions
+    })
+  }
+// -------------------------------------
+// FIND OUT HOW TO DO FILTER BASED ON WHICH MENU IS USED
+// -------------------------------------
+
+  render() {
+    console.log(this.state.checkedExhibitions)
     return (
       <BrowserRouter>
       <Fragment>
@@ -37,26 +66,29 @@ console.log(this.props.selectedExhibition)
             <div className='sidebar'>
 
                 <div className='search'>
-                  <input />
+                  <form>
+                    <input value={this.state.searchTerm} onChange={this.changeHandler}/>
+                    <Link to='/index'><input type='submit'/></Link>
+                  </form>
                 </div>
 
                 <div className='neighborhood-filter'>
                   <label className='menu-header'>Neighborhood</label>
                   <br/><br/>
                   <form className='checkbox-input'>
-                    <input type="checkbox"/>UPPER EAST SIDE<br/>
-                    <input type="checkbox"/>MIDTOWN<br/>
-                    <input type="checkbox"/>FLATIRON/GRAMERCY<br/>
-                    <input type="checkbox"/>CHELSEA<br/>
-                    <input type="checkbox"/>THE VILLAGES<br/>
-                    <input type="checkbox"/>SOHO<br/>
-                    <input type="checkbox"/>LOWER EAST SIDE<br/>
-                    <input type="checkbox"/>LOWER MANHATTAN<br/>
-                    <input type="checkbox"/>QUEENS<br/>
-                    <input type="checkbox"/>HARLEM/BRONX<br/>
-                    <input type="checkbox"/>WILLIAMSBURG<br/>
-                    <input type="checkbox"/>DUMBO<br/>
-                    <input type="submit" value="Submit"/>
+                    <input type="checkbox" name="Upper East Side" onChange={this.checkHandler}/>UPPER EAST SIDE<br/>
+                    <input type="checkbox" name="Midtown" onChange={this.checkHandler}/>MIDTOWN<br/>
+                    <input type="checkbox" name="Flatiron, Gramercy" onChange={this.checkHandler}/>FLATIRON/GRAMERCY<br/>
+                    <input type="checkbox" name="Chelsea" onChange={this.checkHandler}/>CHELSEA<br/>
+                    <input type="checkbox" name="Villages" onChange={this.checkHandler}/>THE VILLAGES<br/>
+                    <input type="checkbox" name="Soho" onChange={this.checkHandler}/>SOHO<br/>
+                    <input type="checkbox" name="Lower East Side" onChange={this.checkHandler}/>LOWER EAST SIDE<br/>
+                    <input type="checkbox" name="Lower Manhattan" onChange={this.checkHandler}/>LOWER MANHATTAN<br/>
+                    <input type="checkbox" name="Queens" onChange={this.checkHandler}/>QUEENS<br/>
+                    <input type="checkbox" name="Harlem, Bronx" onChange={this.checkHandler}/>HARLEM/BRONX<br/>
+                    <input type="checkbox" name="Williamsburg" onChange={this.checkHandler}/>WILLIAMSBURG<br/>
+                    <input type="checkbox" name="Dumbo" onChange={this.checkHandler}/>DUMBO<br/>
+                    <Link to='/index'><input type='submit'/></Link>
                   </form>
                 </div>
 
@@ -95,7 +127,9 @@ console.log(this.props.selectedExhibition)
                 <Route path='/home' component={Homepage} />
                 <Route path='/login' component={LoginForm} />
                 <Route path='/register' component={SignupForm} />
-                <Route path='/index' component={IndexPage} />
+                <Route path='/index' render={()=>{
+                  return <IndexPage checkedExhibitions={this.checkedExhibitions} searchedExhibitions={this.state.searchedExhibitions}/>
+                }} />
               </Switch>
             </div>
           </div>
@@ -114,7 +148,8 @@ console.log(this.props.selectedExhibition)
 // from REDUCER
 const mapStateToProps = (state) => {
   return {
-    selectedExhibition: state.selectedExhibition
+    selectedExhibition: state.selectedExhibition,
+    exhibitions: state.exhibitions
   }
 }
 

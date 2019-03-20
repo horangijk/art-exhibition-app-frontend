@@ -47,7 +47,7 @@ class ExhibitionCard extends Component {
                 <label className="card-area">Location: {this.props.exhibition.venue_area}</label>
               </div>
               <div>
-                <h5>Days Remaining: {this.props.exhibition.days_remaining}</h5>
+                <h5 className="card-remaining">Days Remaining: {this.props.exhibition.days_remaining}</h5>
               </div>
             </div>
           </Card>
