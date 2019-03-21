@@ -13,14 +13,23 @@ import '../App.css'
 
 class IndexPage extends Component {
 
-  // componentDidMount(){
-  //   this.props.getExhibitions()
-  // }
+  componentDidMount(){
+    this.props.getExhibitions()
+  }
 
   render() {
-    let exhibitionList = this.props.searchedExhibitions.map(exObj => {
-      return <Link to={`/index/${exObj.id}`} key={exObj.id}><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
-    })
+    let exhibitionList
+    console.log(this.props.exhibitions)
+    if (this.props.searchedExhibitions.length > 0){
+       exhibitionList = this.props.searchedExhibitions.map(exObj => {
+        return <Link to={`/index/${exObj.id}`} key={exObj.id}><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
+      })
+    }
+    else{
+      exhibitionList = this.props.exhibitions.map(exObj =>{
+        return <Link to={`/index/${exObj.id}`} key={exObj.id}><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
+      })
+    }
 
     return (
       <div>

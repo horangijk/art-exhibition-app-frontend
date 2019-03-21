@@ -62,13 +62,42 @@ export function getCurrentUser(userObj) {
       body: JSON.stringify({user: userObj})
     })
     .then(res => res.json())
-    .then(user => {
-      localStorage.setItem("token", user.jwt);
-      dispatch(signInUser(user));
+    .then(data => {
+      localStorage.setItem("token", data.jwt);
+      dispatch(signInUser(data.user));
+
     })
     .catch(console.error)
   }
 }
+
+
+const showUserProfile = (user) => ({
+  type: "SHOW_USER_PROFILE",
+  payload: user
+})
+
+export const getCurrentUserProfile = userObj => {
+  return (dispatch) => {
+    if (localStorage.token) {
+      fetch("http://localhost:3000/api/v1/profile", {
+        method: "GET",
+        headers: {
+          "Accept" : "application/json",
+          "Content-Type" : "application/json",
+          "Authorization" : `Bearer ${localStorage.token}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        // console.log("data:", data);
+        // dispatch(showUserProfile(data.user.email))
+        dispatch(showUserProfile(data.user));
+      })
+    }
+  }
+}
+
 
 
 
@@ -86,15 +115,3 @@ export function showExhibitionInfo(exhibObj) {
       })
   }
 }
-
-
-// const clickHandleExhibition = (exhibObj) => ({
-//   type: "SELECT_EXHIB",
-//   payload: exhibObj
-// })
-//
-// export function selectExhibitionObj(exhibObj) {
-//   return (dispatch) => {
-//
-//   }
-// }

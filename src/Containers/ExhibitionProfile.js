@@ -56,7 +56,7 @@ class ExhibitionProfile extends Component {
         <img src={
           this.props.selectedExhibition.length > 0
           ? this.props.selectedExhibition.image[-1]['src']
-          : "Not found."
+          : 'https://www.tate.org.uk/sites/default/files/styles/grid-normal-12-cols/public/images/caspar_david_friedrich_monk_by_sea.jpg?itok=Ib0aq6Ww'
         } alt=""/>
 
       </div>

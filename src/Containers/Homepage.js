@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import '../Homepage.css';
-// import Slideshow from '../node_modules/uikit/src/js/components/slideshow.js'
+import '../App.css';
 import ExhibitionCard from '../Components/ExhibitionCard'
 
 import { connect } from 'react-redux'
 import { getExhibitions } from '../Redux/actions.js'
 import { Link } from 'react-router-dom'
-import { Box } from 'rebass'
+// import { Box } from 'rebass'
 
 
 class Homepage extends Component {
@@ -21,7 +20,7 @@ class Homepage extends Component {
     })
 
     let exhibitionList = allExhibitions.map(exObj => {
-      return <Link to={`/index/${exObj.id}`} key={exObj.id}><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
+      return <Link to={`/index/${exObj.id}`} key={exObj.id} className="card-container"><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
     })
 
 

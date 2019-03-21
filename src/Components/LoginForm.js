@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getCurrentUser } from '../Redux/actions'
 
-// import { BrowserRouter, Router, Route, Link, Switch } from 'react-router-dom'
-// import SignupForm from './SignupForm'
+import { Redirect } from 'react-router-dom'
+// import UserProfile from './UserProfile'
 
 
 
@@ -12,6 +12,7 @@ class LoginForm extends Component {
     email: "",
     password: ""
   }
+
 
   changeHandler = (event) => {
     this.setState({
@@ -25,7 +26,13 @@ class LoginForm extends Component {
     this.props.getCurrentUser(currentUser)
   }
 
+
   render() {
+
+    if (!!localStorage.token){
+      return <Redirect to={`/users/${this.props.loggedInUser.id}`}/>
+    }
+
     return (
 
       <div className='content'>
@@ -51,6 +58,12 @@ class LoginForm extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    loggedInUser: state.loggedInUser
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     getCurrentUser: (userObj) => dispatch(getCurrentUser(userObj))
@@ -58,5 +71,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-
-export default connect( null, mapDispatchToProps)(LoginForm)
+export default connect( mapStateToProps, mapDispatchToProps)(LoginForm)

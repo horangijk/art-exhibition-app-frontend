@@ -32,6 +32,10 @@ const reducer = (state = initialState, action) => {
       return {...state, filteredExhibitions: action.payload}
     }
 
+    case "SHOW_USER_PROFILE": {
+      return {...state, loggedInUser: action.payload}
+    }
+
     default:
       return state
   }

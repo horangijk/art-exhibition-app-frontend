@@ -5,10 +5,11 @@ import Homepage from './Containers/Homepage'
 import IndexPage from './Containers/IndexPage'
 import LoginForm from './Components/LoginForm'
 import SignupForm from './Components/SignupForm'
+import UserProfile from './Components/UserProfile'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { showExhibitionInfo } from './Redux/actions.js'
+import { showExhibitionInfo, getCurrentUserProfile } from './Redux/actions.js'
 
 // import ExhibitionProfile from './Containers/ExhibitionProfile'
 // import { Input, Label, Menu } from 'semantic-ui-react'
@@ -20,14 +21,51 @@ class App extends Component {
     searchedExhibitions: this.props.exhibitions,
     checkedExhibitions: this.props.exhibitions,
     searchTerm: '',
-    inputType: ''
+    inputType: '',
+    checkedBoxes: []
+  }
+
+  componentDidMount(){
+    this.props.getCurrentUserProfile()
+  }
+
+  checkHandler = (event) => {
+    this.setState({
+      inputType: 'checkbox'
+    })
+
+    let checkedExhibitions = this.props.exhibitions.filter(exhib => {
+        return exhib.venue_area.includes(event.target.name)
+    })
+
+    if (event.target.checked) {
+      this.setState({
+        checkedBoxes: [...this.state.checkedBoxes, event.target.name],
+        checkedExhibitions: [...this.state.checkedExhibitions, ...checkedExhibitions]
+      })
+    }
+
+    if (!event.target.checked) {
+      let removedArr = this.state.checkedExhibitions.filter(exObj => {
+        return !exObj.venue_area.includes(event.target.name)
+      })
+
+      let removedArrForNames = this.state.checkedBoxes.filter(venue_area => {
+        return !venue_area.includes(event.target.name)
+      })
+
+      this.setState({
+        inputType: 'checkbox',
+        checkedExhibitions: removedArr,
+        checkedBoxes: removedArrForNames
+      })
+    }
   }
 
   searchHandler = (event) => {
     let searchedExhibitions = this.props.exhibitions.filter(exhib => {
       return exhib.name.toLowerCase().includes(event.target.value)
     })
-    console.log(searchedExhibitions);
     this.setState({
       searchTerm: event.target.value,
       searchedExhibitions: searchedExhibitions,
@@ -35,21 +73,11 @@ class App extends Component {
     })
   }
 
-  checkHandler = (event) => {
-    let checkedExhibitions = this.props.exhibitions.filter(exhib => {
-      return exhib.venue_area.includes(event.target.name)
-    })
-    this.setState({
-      checkedExhibitions: checkedExhibitions,
-      inputType: 'checkbox'
-    })
-  }
-// -------------------------------------
-// FIND OUT HOW TO DO FILTER BASED ON WHICH MENU IS USED
-// -------------------------------------
+
+
 
   render() {
-    console.log(this.state.checkedExhibitions)
+
     return (
       <BrowserRouter>
       <Fragment>
@@ -59,6 +87,7 @@ class App extends Component {
               <div className='navbar-menu'>
                 <Link to='/home' className='navbar-options'>HOME</Link>
                 <Link to='/login' className='navbar-options'>LOGIN</Link>
+                {/*<span id='dash'>/</span>*/}
                 <Link to='/register' className='navbar-options'>REGISTER</Link>
                 <Link to='/index' id='index-header'>INDEX</Link>
               </div>
@@ -128,6 +157,7 @@ class App extends Component {
             <div className="main-container">
               <Switch>
                 <Route path='/home' component={Homepage} />
+                <Route path='/users/:id' component={UserProfile} />
                 <Route path='/login' component={LoginForm} />
                 <Route path='/register' component={SignupForm} />
                 <Route path='/index' render={()=>{
@@ -156,14 +186,16 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     selectedExhibition: state.selectedExhibition,
-    exhibitions: state.exhibitions
+    exhibitions: state.exhibitions,
+    loggedInUser: state.loggedInUser
   }
 }
 
 // from ACTION
 const mapDispatchToProps = (dispatch) => {
   return {
-    showExhibitionInfo: () => dispatch(showExhibitionInfo())
+    showExhibitionInfo: () => dispatch(showExhibitionInfo()),
+    getCurrentUserProfile: ()=>dispatch(getCurrentUserProfile())
   }
 }
 
