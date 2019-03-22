@@ -13,7 +13,6 @@ class LoginForm extends Component {
     password: ""
   }
 
-
   changeHandler = (event) => {
     this.setState({
       [event.target.name]: event.target.value

@@ -99,8 +99,6 @@ export const getCurrentUserProfile = userObj => {
 }
 
 
-
-
 const getExhibitionInfo = (exhibObj) => ({
   type: "GET_EXHIB_INFO",
   payload: exhibObj
@@ -113,5 +111,82 @@ export function showExhibitionInfo(exhibObj) {
       .then(exhibition => {
         dispatch(getExhibitionInfo(exhibition))
       })
+  }
+}
+
+
+const saveExhibition = (obj) => ({
+  type: "SAVE_EXHIB",
+  payload: obj
+})
+
+export function postToSavedExhibition(obj) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/saved_exhibitions', {
+      method: "POST",
+      headers: {
+        "Accept" : "application/json",
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({saved_exhibition: obj})
+    })
+      .then(res => res.json())
+      .then(data => {
+        dispatch(saveExhibition(data))
+      })
+      .catch(console.error)
+  }
+}
+
+
+// LEFT OFF HERE
+// FIX BACKGROUND IMAGE ON HOMEPAGE
+
+const loadSavedExhibitions = (exhibitions) => ({
+  type: "LOAD_SAVED_EXHIBITIONS",
+  payload: exhibitions
+})
+
+export function getSavedExhibitions(exhibitions) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/saved_exhibitions')
+      .then(res => res.json())
+      .then(data => {
+        dispatch(loadSavedExhibitions(data))
+      })
+  }
+}
+
+
+const createImpression = (impressionObj) => ({
+  type: "CREATE_IMPRESSION",
+  payload: impressionObj
+})
+
+export function postToExhibitionImpressions(impressionObj) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/impressions', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify({impression: impressionObj})
+    })
+      .then(res => res.json())
+      .then(impression => dispatch(createImpression(impression)))
+  }
+}
+
+const loadAllImpressions = (impressions) => ({
+  type: "LOAD_IMPRESSIONS",
+  payload: impressions
+})
+
+export function getImpressions(impressions) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/impressions')
+      .then(res => res.json())
+      .then(data => dispatch(loadAllImpressions(data)))
   }
 }

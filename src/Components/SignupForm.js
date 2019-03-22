@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createUser } from '../Redux/actions'
+import { Redirect } from 'react-router-dom'
 // import reducer from '../Redux/reducer.js'
 
 class SignupForm extends Component {
@@ -24,6 +25,11 @@ class SignupForm extends Component {
   }
 
   render() {
+
+    if (!!localStorage.token){
+      localStorage.clear()
+      return <Redirect to='/home'/>
+    }
 
     return (
       <div className='content'>

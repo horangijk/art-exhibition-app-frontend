@@ -77,99 +77,97 @@ class App extends Component {
 
 
   render() {
-
     return (
       <BrowserRouter>
       <Fragment>
         <div className='App'>
 
-          <div className='navbar'>
-              <div className='navbar-menu'>
-                <Link to='/home' className='navbar-options'>HOME</Link>
-                <Link to='/login' className='navbar-options'>LOGIN</Link>
-                {/*<span id='dash'>/</span>*/}
-                <Link to='/register' className='navbar-options'>REGISTER</Link>
-                <Link to='/index' id='index-header'>INDEX</Link>
-              </div>
-          </div>
-
-
-          <div className='lower-half'>
-            <div className='sidebar'>
-
-                <div className='search'>
-                  <form>
-                    <input type='search' value={this.state.searchTerm} onChange={this.searchHandler}/>
-                    <Link to='/index'><input type='submit'/></Link>
-                  </form>
+            <div className='navbar'>
+                <div className='navbar-menu'>
+                  <Link to='/home' className='navbar-options'>HOME</Link>
+                  <Link to='/login' className='navbar-options'>{localStorage.token ? "PROFILE" : "LOGIN"}</Link>
+                  {/*<span id='dash'>/</span>*/}
+                  <Link to='/register' className='navbar-options'>{localStorage.token ? "SIGN OUT" : "REGISTER"}</Link>
+                  <Link to='/index' id='index-header'>INDEX</Link>
                 </div>
-
-                <div className='neighborhood-filter'>
-                  <label className='menu-header'>Neighborhood</label>
-                  <br/><br/>
-                  <form className='checkbox-input'>
-                    <input type="checkbox" name="Upper East Side" onChange={this.checkHandler}/>UPPER EAST SIDE<br/>
-                    <input type="checkbox" name="Midtown" onChange={this.checkHandler}/>MIDTOWN<br/>
-                    <input type="checkbox" name="Flatiron, Gramercy" onChange={this.checkHandler}/>FLATIRON/GRAMERCY<br/>
-                    <input type="checkbox" name="Chelsea" onChange={this.checkHandler}/>CHELSEA<br/>
-                    <input type="checkbox" name="Villages" onChange={this.checkHandler}/>THE VILLAGES<br/>
-                    <input type="checkbox" name="Soho" onChange={this.checkHandler}/>SOHO<br/>
-                    <input type="checkbox" name="Lower East Side" onChange={this.checkHandler}/>LOWER EAST SIDE<br/>
-                    <input type="checkbox" name="Lower Manhattan" onChange={this.checkHandler}/>LOWER MANHATTAN<br/>
-                    <input type="checkbox" name="Queens" onChange={this.checkHandler}/>QUEENS<br/>
-                    <input type="checkbox" name="Harlem, Bronx" onChange={this.checkHandler}/>HARLEM/BRONX<br/>
-                    <input type="checkbox" name="Williamsburg" onChange={this.checkHandler}/>WILLIAMSBURG<br/>
-                    <input type="checkbox" name="Dumbo" onChange={this.checkHandler}/>DUMBO<br/>
-                    <Link to='/index'><input type='submit'/></Link>
-                  </form>
-                </div>
-
-                <div className='media-select'>
-                  <label className='menu-header'>Media</label>
-                  <br/><br/>
-                  <select>
-                    <option >2D: Drawing</option>
-                    <option >2D: Painting</option>
-                    <option >2D: Photography</option>
-                    <option >2D: Prints</option>
-                    <option >2D: Graphics</option>
-                    <option >2D: Other</option>
-                    <option >3D: Sculpture</option>
-                    <option >3D: Installation</option>
-                    <option >3D: Furniture</option>
-                    <option >3D: Product</option>
-                    <option >3D: Fashion</option>
-                    <option >3D: Crafts</option>
-                    <option >3D: Architecture</option>
-                    <option >3D: Ceramics</option>
-                    <option >3D: Other</option>
-                    <option >Misc: Media Arts</option>
-                    <option >Misc: Performance Art</option>
-                    <option >Misc: Art Talk</option>
-                    <option >Screen: Digital</option>
-                    <option >Screen: Video Installation</option>
-                    <option >Screen: Film</option>
-                  </select>
-                </div>
-
             </div>
 
-            <div className="main-container">
-              <Switch>
-                <Route path='/home' component={Homepage} />
-                <Route path='/users/:id' component={UserProfile} />
-                <Route path='/login' component={LoginForm} />
-                <Route path='/register' component={SignupForm} />
-                <Route path='/index' render={()=>{
-                  return <IndexPage searchedExhibitions={
-                    this.state.inputType === 'checkbox' ? this.state.checkedExhibitions
-                    : this.state.inputType === 'search' ? this.state.searchedExhibitions
-                    : this.props.exhibitions
-                  }/>
-                }} />
-              </Switch>
+
+            <div className='lower-half'>
+              <div className='sidebar'>
+                  <div className='search'>
+                    <label className='menu-header'>Search</label>
+                    <form>
+                      <input type='search' value={this.state.searchTerm} onChange={this.searchHandler}/>
+                      <br/>
+                      <Link to='/index'><input type='submit'/></Link>
+                    </form>
+                  </div>
+
+                  <div className='neighborhood-filter'>
+                    <label className='menu-header'>Neighborhood</label>
+                    <form className='checkbox-input'>
+                      <input type="checkbox" name="Upper East Side" onChange={this.checkHandler}/>UPPER EAST SIDE<br/>
+                      <input type="checkbox" name="Midtown" onChange={this.checkHandler}/>MIDTOWN<br/>
+                      <input type="checkbox" name="Flatiron, Gramercy" onChange={this.checkHandler}/>FLATIRON/GRAMERCY<br/>
+                      <input type="checkbox" name="Chelsea" onChange={this.checkHandler}/>CHELSEA<br/>
+                      <input type="checkbox" name="Villages" onChange={this.checkHandler}/>THE VILLAGES<br/>
+                      <input type="checkbox" name="Soho" onChange={this.checkHandler}/>SOHO<br/>
+                      <input type="checkbox" name="Lower East Side" onChange={this.checkHandler}/>LOWER EAST SIDE<br/>
+                      <input type="checkbox" name="Lower Manhattan" onChange={this.checkHandler}/>LOWER MANHATTAN<br/>
+                      <input type="checkbox" name="Queens" onChange={this.checkHandler}/>QUEENS<br/>
+                      <input type="checkbox" name="Harlem, Bronx" onChange={this.checkHandler}/>HARLEM/BRONX<br/>
+                      <input type="checkbox" name="Williamsburg" onChange={this.checkHandler}/>WILLIAMSBURG<br/>
+                      <input type="checkbox" name="Dumbo" onChange={this.checkHandler}/>DUMBO<br/>
+                      <Link to='/index'><input type='submit'/></Link>
+                    </form>
+                  </div>
+
+                  <div className='media-select'>
+                    <label className='menu-header'>Media</label>
+                    <select>
+                      <option >2D: Drawing</option>
+                      <option >2D: Painting</option>
+                      <option >2D: Photography</option>
+                      <option >2D: Prints</option>
+                      <option >2D: Graphics</option>
+                      <option >2D: Other</option>
+                      <option >3D: Sculpture</option>
+                      <option >3D: Installation</option>
+                      <option >3D: Furniture</option>
+                      <option >3D: Product</option>
+                      <option >3D: Fashion</option>
+                      <option >3D: Crafts</option>
+                      <option >3D: Architecture</option>
+                      <option >3D: Ceramics</option>
+                      <option >3D: Other</option>
+                      <option >Misc: Media Arts</option>
+                      <option >Misc: Performance Art</option>
+                      <option >Misc: Art Talk</option>
+                      <option >Screen: Digital</option>
+                      <option >Screen: Video Installation</option>
+                      <option >Screen: Film</option>
+                    </select>
+                  </div>
+
+                </div>
+
+                <div className="main-container">
+                  <Switch>
+                    <Route path='/home' component={Homepage} />
+                    <Route path='/users/:id' component={UserProfile} />
+                    <Route path='/login' component={LoginForm} />
+                    <Route path='/register' component={SignupForm} />
+                    <Route path='/index' render={()=>{
+                      return <IndexPage searchedExhibitions={
+                        this.state.inputType === 'checkbox' ? this.state.checkedExhibitions
+                        : this.state.inputType === 'search' ? this.state.searchedExhibitions
+                        : this.props.exhibitions
+                      }/>
+                    }} />
+                  </Switch>
+                </div>
             </div>
-          </div>
 
         </div>
         </Fragment>

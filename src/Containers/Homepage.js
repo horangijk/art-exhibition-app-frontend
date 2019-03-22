@@ -20,7 +20,7 @@ class Homepage extends Component {
     })
 
     let exhibitionList = allExhibitions.map(exObj => {
-      return <Link to={`/index/${exObj.id}`} key={exObj.id} className="card-container"><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
+      return <Link to={`/index/${exObj.id}`} key={exObj.id} ><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>
     })
 
 

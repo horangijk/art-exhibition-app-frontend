@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import '../App.css';
+// import ExhibitionProfile from '../Containers/ExhibitionProfile'
 // import { Card } from 'rebass'
-// import { BrowserRouter, Link, Route} from 'react-router-dom'
+import '../App.css';
 
 import { showExhibitionInfo } from '../Redux/actions.js'
 
-// import ExhibitionProfile from '../Containers/ExhibitionProfile'
 
 
 class ExhibitionCard extends Component {
@@ -26,9 +25,15 @@ class ExhibitionCard extends Component {
 
     return (
       <div className='card-container' onClick={() => this.props.showExhibitionInfo(this.props.exhibition)}>
-        <h3>{exhibitionName}</h3><br/>
-        <h3>Location: {this.props.exhibition.venue_area}</h3>
-        <h3>Days Remaining: {this.props.exhibition.days_remaining}</h3>
+        <div>
+          <h3 className='card-name'>{exhibitionName}</h3>
+          <br/>
+          <h3 className='card-location'>Location: {this.props.exhibition.venue_area}</h3>
+          <br/>
+        </div>
+        <div className='footer'>
+          <h3 className='card-days-remaining'>Days Remaining: {this.props.exhibition.days_remaining}</h3>
+        </div>
       </div>
     )
   }

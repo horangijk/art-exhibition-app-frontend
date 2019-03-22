@@ -1,18 +1,46 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { showExhibitionInfo } from '../Redux/actions.js'
+import { showExhibitionInfo, postToSavedExhibition } from '../Redux/actions.js'
+import ImpressionForm from '../Components/ImpressionForm'
+import ImpressionCard from '../Components/ImpressionCard'
 
 class ExhibitionProfile extends Component {
-  // componentDidMount(){
-  //   this.props.showExhibitionInfo()
-  // }
+  componentDidMount(){
+    // this.props.showExhibitionInfo()
+    this.props.getImpressions()
+  }
+
+  state = {
+    user_id: this.props.loggedInUser.id,
+    exhibition_id: this.props.selectedExhibition.id,
+    clicked: false
+  }
+
+  clickHandler = () => {
+    this.props.postToSavedExhibition(this.state)
+  }
+
+  impressionHandler = () => {
+    this.setState({
+      clicked: !this.state.clicked
+    })
+  }
+
 
   render() {
+    let exhibitionImpressions = this.props.allImpressions.filter(impObj => {
+      return impObj.exhibition_id === this.props.selectedExhibition.id
+    })
+
+    let impressionCards = exhibitionImpressions.map(impObj => {
+      return <ImpressionCard key={impObj.id} impressionObj={impObj}/>
+    })
+    console.log(impressionCards)
+
     // let imageArr = this.props.selectedExhibition.image.map(imgObj => {
     //   return imgObj['src']
     // })
     // console.log(imageArr);
-
 
     return (
       <div>
@@ -59,22 +87,38 @@ class ExhibitionProfile extends Component {
           : 'https://www.tate.org.uk/sites/default/files/styles/grid-normal-12-cols/public/images/caspar_david_friedrich_monk_by_sea.jpg?itok=Ib0aq6Ww'
         } alt=""/>
 
+        <button onClick={this.clickHandler}>INTERESTED</button>
+
+
+        <h2>IMPRESSIONS</h2>
+        {impressionCards}
+
+        <button onClick={this.impressionHandler}>Leave an Impression</button>
+        {
+          this.state.clicked === true
+          ? <ImpressionForm />
+          : null
+        }
       </div>
     )
   }
 }
 
+
 // from REDUCER
 const mapStateToProps = (state) => {
   return {
-    selectedExhibition: state.selectedExhibition
+    selectedExhibition: state.selectedExhibition,
+    loggedInUser: state.loggedInUser,
+    allImpressions: state.allImpressions
   }
 }
 
 // from ACTION
 const mapDispatchToProps = (dispatch) => {
   return {
-    showExhibitionInfo: () => dispatch(showExhibitionInfo())
+    showExhibitionInfo: () => dispatch(showExhibitionInfo()),
+    postToSavedExhibition: (obj) => dispatch(postToSavedExhibition(obj))
   }
 }
 
