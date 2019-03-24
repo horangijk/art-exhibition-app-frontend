@@ -19,7 +19,6 @@ class IndexPage extends Component {
 
   render() {
     let exhibitionList
-    // console.log(this.props.exhibitions)
     if (this.props.searchedExhibitions.length > 0){
        exhibitionList = this.props.searchedExhibitions.map(exObj => {
         return <Link to={`/index/${exObj.id}`} key={exObj.id}><ExhibitionCard key={exObj.id} exhibition={exObj}/></Link>

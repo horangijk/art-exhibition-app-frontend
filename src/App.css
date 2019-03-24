@@ -1,4 +1,5 @@
 /* @import url(//db.onlinewebfonts.com/c/876ef15b9ad3f53654d93aff21dfa239?family=AmasisMTW01-Black); */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .App {
   display: grid;
@@ -6,29 +7,37 @@
 }
 
 body {
-  background: linear-gradient(45deg, #FFCC00, #ffbb00);
+  /* background: linear-gradient(45deg, #FFCC00, #ffbb00); */
+  background-color: #ffbb00;
   height: 100vh;
 }
 
 /* one column for SIDEBAR and another column for MAIN CONTAINER */
 .lower-half {
   display: grid;
-  grid-template-columns: 13% 1fr;
+  grid-template-columns: 14% 1fr;
 }
 
 .sidebar {
-  /* display: grid; */
   /* width: 15%; */
-  height: 100%;
+  /* display: grid; */
   float: left;
   background-color: black;
+
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 .navbar {
   display: grid;
-  /* background-color: #ff8800; */
   background: linear-gradient(-45deg, #FF0040, #0e5782);
   text-align: right;
+
+  position: sticky;
+  top: 0;
+  width: 100vh;
+  width: 100%;
 }
 
 .navbar-menu {
@@ -58,21 +67,21 @@ body {
 }
 
 .search {
-  padding: 10px;
-  padding-top: 20px;
-  margin-left: 10px;
+  padding: 20px 10px 10px 10px;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .neighborhood-filter {
   color: white;
   text-align: left;
-  font-family: 'Berthold Akzidenz Grotesk';
-  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-medium.woff');
-  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-size: 0.9vw;
+  font-weight: bold;
   padding: 10px;
   padding-top: 20px;
-  margin-left: 10px;
-  font-size: 0.8vw;
+  margin-left: 12px;
 }
 
 .media-select {
@@ -83,9 +92,24 @@ body {
   src: url('./FjallaOne-Regular.ttf');
   font-size: 18px;
   font-size: 2vw;
-  padding: 10px;
-  padding-top: 20px;
-  margin-left: 10px;
+  padding: 20px 10px 10px 10px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.media-select select {
+  border-width: 0px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  font-family: 'Montserrat', sans-serif;
+  /* font-weight: bold; */
+  font-size: 14px;
+  font-size: 0.9vw;
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  padding: 3px 10px 3px 10px;
+  text-transform: uppercase;
 }
 
 .menu-header {
@@ -125,15 +149,16 @@ body {
   /* opacity: 0.8; */
 }
 
-.image-container:hover {
+/* .image-container:hover {
   opacity: 0.5;
   filter: blur(15px);
-}
+} */
 
 .exhibition-container {
   /* display: grid; */
   /* grid-template-rows: 50px 1fr; */
-  background: linear-gradient(45deg, #FFCC00, #ffbb00);
+  /* background: linear-gradient(45deg, #FFCC00, #ffbb00); */
+  background-color: #ffbb00;
   width: 100%;
   height: 100%;
   margin: auto;
@@ -142,7 +167,8 @@ body {
 
 .index-container {
   display: grid;
-  background: linear-gradient(45deg, #FFCC00, #ffbb00);
+  /* background: linear-gradient(45deg, #FFCC00, #ffbb00); */
+  background-color: #ffbb00;
   background-size: cover;
 }
 
@@ -152,8 +178,8 @@ body {
   font-family: 'Fjalla One';
   src: url('./FjallaOne-Regular.ttf');
   font-size: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* background-color: black; */
+  padding: 0px 20px 0px 20px;
 }
 
 .exhibition-list {
@@ -161,8 +187,8 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   align-content: center;
   margin: auto;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
   padding-left: 20px;
   padding-right: 20px;
   margin-top: -20px;
@@ -171,11 +197,12 @@ body {
 
 .checkbox-input {
   line-height: 1.4;
+  border-width: 0px;
 }
 
 .card-container {
   display: grid;
-  grid-template-rows: 80% 1fr;
+  grid-template-rows: 75% 1fr;
   text-align: left;
   background-color: #fcfaf2;
   color: #282828;
@@ -189,28 +216,30 @@ body {
 
 .card-name {
   display: inline-block;
-  font-family: 'Berthold Akzidenz Grotesk';
-  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-bold.woff');
-  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
   line-height: 1.1;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 
 .card-location {
   display: inline-block;
-  font-family: 'Berthold Akzidenz Grotesk';
-  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-regular.woff');
+  font-family: 'Montserrat', sans-serif;
   font-style: italic;
   font-size: 16px;
+  font-weight: lighter;
   margin-top: -100px;
+}
+
+.footer {
+  margin-bottom: 10px;
 }
 
 .card-days-remaining {
   display: inline-block;
-  font-family: 'Berthold Akzidenz Grotesk';
-  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-medium-italic.woff');
-  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
 }
 
 
@@ -228,8 +257,7 @@ body {
 }
 
 #subheader {
-  font-family: 'Berthold Akzidenz Grotesk';
-  src: url('./berthold-akzidenz-grotesk-be-9-cufonfonts-webfont/Berthold-akzidenz-grotesk-be-medium.woff');
+  font-family: 'Montserrat', sans-serif;
   font-size: 35px;
   color: black;
   letter-spacing: -0.02em;
@@ -248,4 +276,145 @@ body {
   font-size: 30px;
   color: white;
   text-decoration: none;
+}
+
+input[type=text] {
+  width: 100%;
+  height: 25px;
+  border-width: 0px;
+}
+
+input[type=submit] {
+  width: 80px;
+  border-width: 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.user-info {
+  display: grid;
+  grid-template-rows: 200px 1fr;
+  /* background-color: white; */
+  background-image: url('./alberto-giacometti (site image).png');
+  background-position: 60% 50%;
+  width: 100%;
+}
+
+.user-name {
+  display: grid;
+  font-family: 'Fjalla One';
+  src: url('./FjallaOne-Regular.ttf');
+  font-size: 60px;
+  color: black;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+.user-name-header {
+  margin: 0px;
+  margin-top: 40px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.user-details {
+  display: grid;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 40px;
+
+  text-align: right;
+  margin-right: 30px;
+}
+
+.user-details h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 0px;
+  color: black;
+}
+
+.user-details label {
+  font-size: 18px;
+  font-weight: lighter;
+  margin-top: 0px;
+}
+
+.exhibition-profile {
+  display: grid;
+  /* grid-template-rows: 20% 1fr; */
+}
+
+.exhibition-heading {
+  display: grid;
+  font-family: 'Fjalla One';
+  src: url('./FjallaOne-Regular.ttf');
+  background-color: white;
+  padding: 45px 20px 45px 20px;
+}
+
+.exhibition-heading h1 {
+  display: grid;
+  font-size: 60px;
+  margin: auto auto auto 20px;
+}
+
+.exhibition-heading h4 {
+  display: grid;
+  font-size: 40px;
+  /* margin-top: 0px; */
+  color: white;
+  background-color: black;
+  margin: 25px auto auto 20px;
+  padding: 0px 20px 0px 20px;
+  width: 330px;
+  text-align: center;
+}
+
+.exhibition-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: 'Montserrat', sans-serif;
+  padding: 25px 20px 25px 20px;
+}
+
+.exhibition-info label {
+  font-size: 18px;
+  font-weight: 50;
+  margin: auto auto auto 20px;
+}
+
+.exhibition-info p {
+  font-size: 25px;
+  font-weight: bold;
+  margin: auto auto 20px 20px;
+  line-height: 1.5;
+}
+
+.heading-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: -10px;
+}
+
+.button-container {
+  /* margin: auto auto 0px 0px; */
+  margin: auto 0px 0px auto;
+  padding: 0px 20px 0px 20px;
+}
+
+.interested-button {
+  font-family: 'Fjalla One';
+  font-size: 25px;
+  src: url('./FjallaOne-Regular.ttf');
+  color: white;
+  /* background-color: #FF0040; */
+  background: linear-gradient(-45deg, #FF0040, #0e5782);
+  width: 150px;
+  height: 50px;
+  -webkit-box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
+  -moz-box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
+  box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
+  border-width: 0px;
 }

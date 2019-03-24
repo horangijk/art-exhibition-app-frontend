@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { getCurrentUser } from '../Redux/actions'
 
 import { Redirect } from 'react-router-dom'
-// import UserProfile from './UserProfile'
 
 
 
@@ -42,7 +41,7 @@ class LoginForm extends Component {
             <input type="text" name="email" value={this.state.email} onChange={this.changeHandler}/>
             <br/>
             <label>Password:</label>
-            <input type="text" name="password" value={this.state.password} onChange={this.changeHandler}/>
+            <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
             <br/>
             <input type="submit"/>
           </form>

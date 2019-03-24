@@ -19,8 +19,7 @@ class UserProfile extends Component {
       })
     })
 
-
-    interestedExhibitions = interestedExhibitions.filter(oneThing => oneThing !== undefined)
+    interestedExhibitions = interestedExhibitions.filter(exObj => exObj !== undefined)
 
     let listOfSavedExhibitions
     if (this.props.usersSavedExhibitions.length > 0){
@@ -29,17 +28,30 @@ class UserProfile extends Component {
       })
     }
 
-
     return (
       <div>
-        <h2>{this.props.loggedInUser.full_name}</h2>
-        <h2>{this.props.loggedInUser.email}</h2>
-        <h2>{this.props.loggedInUser.home_neighborhood}</h2>
 
-        
+        <div className='user-info'>
+          <div className='user-name'>
+            <h2 className='user-name-header'>{this.props.loggedInUser.full_name}</h2>
+          </div>
 
-        <div className='exhibition_list'>
-          {listOfSavedExhibitions}
+          <div className='user-details'>
+            <label>Occupation:</label>
+            <h2>{this.props.loggedInUser.occupation}</h2>
+            <label>Home Neighborhood:</label>
+            <h2>{this.props.loggedInUser.home_neighborhood}</h2>
+          </div>
+        </div>
+
+
+        <div className='exhibition-container'>
+          <div>
+            <h1 className='exhibition-header'>SAVED EXHIBITIONS</h1>
+          </div>
+          <div className='exhibition-list'>
+            {listOfSavedExhibitions}
+          </div>
         </div>
       </div>
     )

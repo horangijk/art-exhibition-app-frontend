@@ -44,7 +44,7 @@ class SignupForm extends Component {
             <input type="text" name="email" value={this.state.email} onChange={this.changeHandler}/>
             <br/>
             <label>Password:</label>
-            <input type="text" name="password_digest" value={this.state.password_digest} onChange={this.changeHandler}/>
+            <input type="password" name="password_digest" value={this.state.password_digest} onChange={this.changeHandler}/>
             <br/>
             <label>Hometown:</label>
             <input type="text" name="home_neighborhood" value={this.state.home_neighborhood} onChange={this.changeHandler}/>

@@ -29,7 +29,6 @@ class ExhibitionCard extends Component {
           <h3 className='card-name'>{exhibitionName}</h3>
           <br/>
           <h3 className='card-location'>Location: {this.props.exhibition.venue_area}</h3>
-          <br/>
         </div>
         <div className='footer'>
           <h3 className='card-days-remaining'>Days Remaining: {this.props.exhibition.days_remaining}</h3>

@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import { showExhibitionInfo, getCurrentUserProfile } from './Redux/actions.js'
 
 // import ExhibitionProfile from './Containers/ExhibitionProfile'
-// import { Input, Label, Menu } from 'semantic-ui-react'
+import { Search } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -92,13 +92,12 @@ class App extends Component {
                 </div>
             </div>
 
-
             <div className='lower-half'>
               <div className='sidebar'>
                   <div className='search'>
                     <label className='menu-header'>Search</label>
                     <form>
-                      <input type='search' value={this.state.searchTerm} onChange={this.searchHandler}/>
+                      <input type='text' value={this.state.searchTerm} onChange={this.searchHandler}/>
                       <br/>
                       <Link to='/index'><input type='submit'/></Link>
                     </form>
@@ -126,6 +125,7 @@ class App extends Component {
                   <div className='media-select'>
                     <label className='menu-header'>Media</label>
                     <select>
+                      <option >SELECT ▼</option>
                       <option >2D: Drawing</option>
                       <option >2D: Painting</option>
                       <option >2D: Photography</option>

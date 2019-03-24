@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { postToExhibitionImpressions, getImpressions } from '../Redux/actions'
+import { postToExhibitionImpressions } from '../Redux/actions'
 
 class ImpressionForm extends Component {
   state = {
