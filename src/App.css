@@ -29,6 +29,10 @@ body {
   height: 100vh;
 }
 
+.sidebar-content {
+  margin: 25px auto auto auto;
+}
+
 .navbar {
   display: grid;
   background: linear-gradient(-45deg, #FF0040, #0e5782);
@@ -106,10 +110,11 @@ body {
   font-size: 14px;
   font-size: 0.9vw;
   text-align: center;
-  width: 100%;
+  width: 100px;
   height: 25px;
   padding: 3px 10px 3px 10px;
   text-transform: uppercase;
+  /* background-color: #ffbb00; */
 }
 
 .menu-header {
@@ -186,7 +191,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   align-content: center;
-  margin: auto;
+  /* margin: auto; */
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   padding-left: 20px;
@@ -197,18 +202,24 @@ body {
 
 .checkbox-input {
   line-height: 1.4;
-  border-width: 0px;
 }
+
+/* input[type=checkbox] {
+  border-width: 5px;
+  border-radius: 0px;
+} */
 
 .card-container {
   display: grid;
   grid-template-rows: 75% 1fr;
   text-align: left;
-  background-color: #fcfaf2;
+  /* background-color: #fcfaf2; */
+  background-color: white;
   color: #282828;
   padding-left: 20px;
   padding-right: 20px;
-  height: 220px;
+  height: 200px;
+  width: 280px;
   -webkit-box-shadow: 7px 7px 17px -2px rgba(221, 162, 0);
   -moz-box-shadow: 7px 7px 17px -2px rgba(221, 162, 0);
   box-shadow: 7px 7px 17px -2px rgba(221, 162, 0);
@@ -217,7 +228,8 @@ body {
 .card-name {
   display: inline-block;
   font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
   line-height: 1.1;
   margin-top: 20px;
 }
@@ -258,10 +270,15 @@ body {
 
 #subheader {
   font-family: 'Montserrat', sans-serif;
-  font-size: 35px;
-  color: black;
+  font-size: 30px;
+  color: white;
+  background-color: black;
   letter-spacing: -0.02em;
   text-align: center;
+
+  width: 75%;
+  margin: 60px auto 60px auto;
+  padding: 3px 3px 3px 3px;
 }
 
 #logo-and-subheader {
@@ -285,12 +302,14 @@ input[type=text] {
 }
 
 input[type=submit] {
-  width: 80px;
+  width: 100px;
+  height: 25px;
   border-width: 0px;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   margin-top: 5px;
+  background-color: white;
 }
 
 .user-info {
@@ -343,7 +362,7 @@ input[type=submit] {
 
 .exhibition-profile {
   display: grid;
-  /* grid-template-rows: 20% 1fr; */
+  /* grid-template-rows: 1fr 1fr 1fr; */
 }
 
 .exhibition-heading {
@@ -368,7 +387,7 @@ input[type=submit] {
   background-color: black;
   margin: 25px auto auto 20px;
   padding: 0px 20px 0px 20px;
-  width: 330px;
+  width: 340px;
   text-align: center;
 }
 
@@ -386,7 +405,7 @@ input[type=submit] {
 }
 
 .exhibition-info p {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
   margin: auto auto 20px 20px;
   line-height: 1.5;
@@ -405,16 +424,74 @@ input[type=submit] {
 }
 
 .interested-button {
-  font-family: 'Fjalla One';
-  font-size: 25px;
-  src: url('./FjallaOne-Regular.ttf');
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: bolder;
+
   color: white;
   /* background-color: #FF0040; */
   background: linear-gradient(-45deg, #FF0040, #0e5782);
-  width: 150px;
+  width: 180px;
   height: 50px;
   -webkit-box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
   -moz-box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
   box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
   border-width: 0px;
+}
+
+.impressions {
+  display: grid;
+  padding: 25px 20px 25px 20px;
+  grid-template-rows: 1fr 1fr;
+  /* border: 7px 0px 7px 0px;
+  border-style: solid;
+  border-width: thick;
+  -webkit-box-sizing: border-box; */
+}
+
+.impressions h2 {
+  display: grid;
+  font-family: 'Fjalla One';
+  src: url('./FjallaOne-Regular.ttf');
+  font-size: 40px;
+  /* margin: 0px 0px 0px 0px; */
+  margin: auto auto auto 20px;
+}
+
+.impressions button {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: bolder;
+
+  background: linear-gradient(-45deg, #FF0040, #0e5782);
+  color: white;
+  width: 250px;
+  height: 38px;
+  -webkit-box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
+  -moz-box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
+  box-shadow: 2px 5px 5px -2px rgba(0, 0, 0);
+  border-width: 0px;
+  margin: auto auto 20px 20px;
+}
+
+.first-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.second-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.impression-title {
+  margin: auto auto auto 20px;
+}
+
+.impression-content {
+  margin: auto auto auto 20px;
+}
+
+.impression-submit {
+  margin: auto auto auto 20px;
 }

@@ -37,9 +37,9 @@ class UserProfile extends Component {
           </div>
 
           <div className='user-details'>
-            <label>Occupation:</label>
+            <label>OCCUPATION:</label>
             <h2>{this.props.loggedInUser.occupation}</h2>
-            <label>Home Neighborhood:</label>
+            <label>HOME NEIGHBORHOOD:</label>
             <h2>{this.props.loggedInUser.home_neighborhood}</h2>
           </div>
         </div>

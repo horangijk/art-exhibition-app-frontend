@@ -133,15 +133,34 @@ class ExhibitionProfile extends Component {
             </div>
         </div>
 
-        <h2>IMPRESSIONS</h2>
-        {impressionCards}
 
-        <button onClick={this.impressionHandler}>Leave an Impression</button>
-        {
-          this.state.clicked === true
-          ? <ImpressionForm />
-          : null
-        }
+        <div className='impressions'>
+          <div className="first-row">
+            <div>
+              <h2>IMPRESSIONS</h2>
+            </div>
+
+            <div>
+              <button onClick={this.impressionHandler}>LEAVE IMPRESSION</button>
+            </div>
+          </div>
+
+          <div className="second-row">
+            <div>
+              {impressionCards}
+            </div>
+
+            <div>
+              {
+                this.state.clicked === true
+                ? <ImpressionForm />
+                : null
+              }
+            </div>
+          </div>
+
+        </div>
+
       </div>
     )
   }
