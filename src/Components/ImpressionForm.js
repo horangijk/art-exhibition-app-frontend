@@ -16,7 +16,8 @@ class ImpressionForm extends Component {
     })
   }
 
-  submitHandler = () => {
+  submitHandler = (event) => {
+    event.preventDefault()
     this.props.postToExhibitionImpressions(this.state)
   }
 

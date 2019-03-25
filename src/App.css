@@ -154,10 +154,11 @@ body {
   /* opacity: 0.8; */
 }
 
-/* .image-container:hover {
-  opacity: 0.5;
-  filter: blur(15px);
-} */
+.image-container:hover {
+  /* opacity: 0.5;
+  filter: blur(15px); */
+  filter: invert(100%);
+}
 
 .exhibition-container {
   /* display: grid; */
@@ -268,6 +269,11 @@ body {
   margin: auto;
 }
 
+/* #logo:hover {
+  color: white;
+  filter: invert(100%);
+} */
+
 #subheader {
   font-family: 'Montserrat', sans-serif;
   font-size: 30px;
@@ -319,6 +325,10 @@ input[type=submit] {
   background-image: url('./alberto-giacometti (site image).png');
   background-position: 60% 50%;
   width: 100%;
+}
+
+.user-info:hover {
+  filter: invert(100%);
 }
 
 .user-name {
@@ -395,7 +405,7 @@ input[type=submit] {
   display: grid;
   grid-template-columns: 1fr 1fr;
   font-family: 'Montserrat', sans-serif;
-  padding: 25px 20px 25px 20px;
+  padding: 40px 25px 25px 25px;
 }
 
 .exhibition-info label {
@@ -408,7 +418,8 @@ input[type=submit] {
   font-size: 22px;
   font-weight: bold;
   margin: auto auto 20px 20px;
-  line-height: 1.5;
+  line-height: 1.4;
+  padding-top: 5px;
 }
 
 .heading-columns {
@@ -441,8 +452,8 @@ input[type=submit] {
 
 .impressions {
   display: grid;
-  padding: 25px 20px 25px 20px;
-  grid-template-rows: 1fr 1fr;
+  padding: 25px 25px 25px 25px;
+  grid-template-rows: 20% 1fr;
   /* border: 7px 0px 7px 0px;
   border-style: solid;
   border-width: thick;
@@ -454,7 +465,6 @@ input[type=submit] {
   font-family: 'Fjalla One';
   src: url('./FjallaOne-Regular.ttf');
   font-size: 40px;
-  /* margin: 0px 0px 0px 0px; */
   margin: auto auto auto 20px;
 }
 
@@ -477,6 +487,7 @@ input[type=submit] {
 .first-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-bottom: 80px;
 }
 
 .second-row {
@@ -485,13 +496,50 @@ input[type=submit] {
 }
 
 .impression-title {
-  margin: auto auto auto 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  width: 600px !important;
+  height: 30px !important;
+  margin: 0px 0px 10px 20px;
+  padding: 0px 0px 0px 10px;
 }
 
 .impression-content {
-  margin: auto auto auto 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  width: 600px !important;
+  height: 80px !important;
+  margin: 0px 0px 10px 20px;
+  padding: 0px 0px 0px 10px;
 }
 
 .impression-submit {
-  margin: auto auto auto 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  margin: 0px 0px 0px 20px;
+  background-color: black !important;
+  color: white !important;
+}
+
+/* .impression-card {
+  display: grid;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 10px;
+} */
+
+.impression-card h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px 0px 0px 20px;
+  /* padding-top: 10px; */
+}
+
+.impression-card p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: lighter;
+  margin: 0px 0px 0px 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }

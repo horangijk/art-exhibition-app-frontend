@@ -7,8 +7,9 @@ const ImpressionCard = (props) => {
 // technically, all props from ExhibitionProfile can be accessed and rendered here
 
   return (
-    <div>
+    <div className="impression-card">
       <h2>{impressionObj.title}</h2>
+      <p>{impressionObj.content}</p>
     </div>
   )
 }
