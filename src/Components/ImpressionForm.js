@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import { postToExhibitionImpressions } from '../Redux/actions'
 
 class ImpressionForm extends Component {
+
   state = {
     user_id: this.props.loggedInUser.id,
-    exhibition_id: this.props.selectedExhibition.id,
+    exhibition_id: this.props.exhibition.id,
     title: "",
     content: ""
   }
@@ -21,10 +22,6 @@ class ImpressionForm extends Component {
     this.props.postToExhibitionImpressions(this.state)
   }
 
-// ********************
-// THE CREATED IMPRESSION NEEDS TO STILL BE RENDERED ON THE EXHIBITION PAGE
-// ====> write function that displays the impressions of a specific exhibition
-// ********************
 
   render () {
     return (

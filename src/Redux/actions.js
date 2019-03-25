@@ -121,6 +121,7 @@ const saveExhibition = (obj) => ({
 })
 
 export function postToSavedExhibition(obj) {
+  console.log(obj);
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/saved_exhibitions', {
       method: "POST",
@@ -132,6 +133,7 @@ export function postToSavedExhibition(obj) {
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         dispatch(saveExhibition(data))
       })
       .catch(console.error)

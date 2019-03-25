@@ -15,8 +15,6 @@ import { Provider } from 'react-redux'
 
 import thunk from 'redux-thunk'
 
-// import 'semantic-ui-css/semantic.css';
-
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancer = composeEnhancers(

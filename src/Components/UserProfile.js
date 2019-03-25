@@ -10,16 +10,18 @@ class UserProfile extends Component {
     this.props.getExhibitions()
   }
 
-// almost there
-// interestedExhibitions can be console.logged (4 Exhibition objects)
-  render(){
-    let interestedExhibitions = this.props.usersSavedExhibitions.map(exhib => {
-      return this.props.exhibitions.find(exObj => {
-        return exObj.id === exhib.exhibition_id
-      })
-    })
 
-    interestedExhibitions = interestedExhibitions.filter(exObj => exObj !== undefined)
+  render(){
+    let interestedExhibitions
+    if (this.props.usersSavedExhibitions.length > 0) {
+      interestedExhibitions = this.props.usersSavedExhibitions.map(exhib => {
+        return this.props.exhibitions.find(exObj => {
+          return exObj.id === exhib.exhibition_id
+        })
+      })
+      interestedExhibitions = interestedExhibitions.filter(exObj => exObj !== undefined)
+    }
+
 
     let listOfSavedExhibitions
     if (this.props.usersSavedExhibitions.length > 0){

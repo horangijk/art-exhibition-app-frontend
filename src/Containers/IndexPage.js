@@ -30,18 +30,31 @@ class IndexPage extends Component {
       })
     }
 
+    // <Route path={`/index/:id`} render={(routerProps) => {
+    //   console.log("TESTING TESTING", routerProps)
+    //   //go into your routerProps and pull the id
+    //   return <ExhibitionProfile />
+    // }} />
+
     return (
       <div>
         <Switch>
-          <Route path={`/index/${this.props.selectedExhibition.id}`} component={ExhibitionProfile} />
+          <Route path='/index/:id' render={(routerProps) => {
+            let id = routerProps.match.params.id
+            let foundExObj = this.props.exhibitions.find(exObj => {
+              return exObj.id === parseInt(id)
+            })
+
+            return ( foundExObj ? <ExhibitionProfile exhibition={foundExObj}/> : null)
+          }} />
+
           <Route path='/index' render={
-            ()=>{
+            () => {
               return <div className='index-container'>
                   <h3 className='exhibition-header'>NYC EXHIBITIONS</h3>
                 <div className='exhibition-list'>
                   {exhibitionList}
                 </div>
-
               </div>
             }
           }/>

@@ -12,6 +12,7 @@ class Homepage extends Component {
 
   componentDidMount(){
     this.props.getExhibitions()
+    console.log(this.props.exhibitions);
   }
 
   render() {

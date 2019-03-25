@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 import { showExhibitionInfo, getCurrentUserProfile } from './Redux/actions.js'
 
 // import ExhibitionProfile from './Containers/ExhibitionProfile'
-import { Search } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -27,6 +26,16 @@ class App extends Component {
 
   componentDidMount(){
     this.props.getCurrentUserProfile()
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      searchedExhibitions: this.props.exhibitions,
+      checkedExhibitions: this.props.exhibitions,
+      searchTerm: '',
+      inputType: '',
+      checkedBoxes: []
+    })
   }
 
   checkHandler = (event) => {
@@ -60,6 +69,13 @@ class App extends Component {
         checkedBoxes: removedArrForNames
       })
     }
+
+    // else {
+    //   this.setState({
+    //     checkedExhibitions: this.props.exhibitions
+    //   })
+    // }
+
   }
 
   searchHandler = (event) => {

@@ -7,10 +7,11 @@ import ImpressionCard from '../Components/ImpressionCard'
 
 class ExhibitionProfile extends Component {
   componentDidMount(){
-    // this.props.showExhibitionInfo()
     this.props.getImpressions()
     this.props.getSavedExhibitions()
+    this.props.showExhibitionInfo(this.props.exhibition)
   }
+
 
   state = {
     user_id: this.props.loggedInUser.id,
@@ -19,11 +20,14 @@ class ExhibitionProfile extends Component {
   }
 
   clickHandler = () => {
-    let savedExhibitionObjArr = this.props.usersSavedExhibitions.map(exObj1 => {
-      return this.props.exhibitions.find(exObj2 => {
-        return exObj2.id === exObj1.exhibition_id
+    let savedExhibitionObjArr
+    if (this.props.usersSavedExhibitions) {
+      savedExhibitionObjArr = this.props.usersSavedExhibitions.map(exObj1 => {
+        return this.props.exhibitions.find(exObj2 => {
+          return exObj2.id === exObj1.exhibition_id
+        })
       })
-    })
+    }
 
     // savedExhibitionObjArr = savedExhibitionObjArr.filter(exObj => {
     //   return exObj !== undefined
@@ -31,11 +35,9 @@ class ExhibitionProfile extends Component {
 
     // if (savedExhibitionObjArr.length > 0) {
       if (!savedExhibitionObjArr.includes(this.props.selectedExhibition)) {
-        this.props.postToSavedExhibition({user_id: this.state.user_id, exhibition_id: this.state.exhibition_id});
+        this.props.postToSavedExhibition({user_id: this.state.user_id, exhibition_id: this.props.exhibition.id});
       }
     // }
-
-    console.log(savedExhibitionObjArr)
   }
 
 
@@ -48,31 +50,41 @@ class ExhibitionProfile extends Component {
 
   render() {
 
-    let exhibitionImpressions = this.props.allImpressions.filter(impObj => {
-      return impObj.exhibition_id === this.props.selectedExhibition.id
-    })
+    let exhibitionImpressions
+    if (this.props.allImpressions.length > 0) {
+      exhibitionImpressions = this.props.allImpressions.filter(impObj => {
+        return impObj.exhibition_id === this.props.selectedExhibition.id
+      })
+    }
 
-    let impressionCards = exhibitionImpressions.map(impObj => {
-      return <ImpressionCard key={impObj.id} impressionObj={impObj}/>
-    })
+    let impressionCards
+    if (exhibitionImpressions) {
+      impressionCards = exhibitionImpressions.map(impObj => {
+        return <ImpressionCard key={impObj.id} impressionObj={impObj}/>
+      })
+    }
 
 
     // let imageArr
-    // if (this.props.selectedExhibition.image.length > 0) {
-    //   imageArr = this.props.selectedExhibition.image.map(imgObj => {
+    // if (this.props.exhibition) {
+    //   imageArr = this.props.exhibition.image.map(imgObj => {
     //     return imgObj['src']
     //   })
-    //
     // }
+
     // imageArr = imageArr.filter(img => img !== undefined)
     //
-    // console.log(imageArr)
+    console.log(this.props.exhibition.image)
+    console.log(this.props.loggedInUser);
 
-    let exhibitionName = this.props.selectedExhibition.name.split(' ').map(str => {
-      if (str !== 'Exhibition') {
-        return str + " "
-      }
-    })
+    let exhibitionName
+    if (this.props.exhibition) {
+      exhibitionName = this.props.exhibition.name.split(' ').map(str => {
+        if (str !== 'Exhibition') {
+          return str + " "
+        }
+      })
+    }
 
     return (
       <div className='exhibition-profile'>
@@ -82,7 +94,7 @@ class ExhibitionProfile extends Component {
           <h1>_______________</h1>
           <div className='heading-columns'>
             <div>
-              <h4>DAYS REMAINING: {this.props.selectedExhibition.days_remaining}</h4>
+              <h4>DAYS REMAINING: {this.props.exhibition.days_remaining}</h4>
             </div>
             <div className='button-container'>
               <Link to={`/users/${this.props.loggedInUser.id}`} key={this.props.loggedInUser.id}><button onClick={this.clickHandler} className='interested-button'>INTERESTED</button></Link>
@@ -93,43 +105,44 @@ class ExhibitionProfile extends Component {
         <div className='exhibition-info'>
             <div>
               <label>VENUE:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.venue_name}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.venue_name}</p>
               <label>ADDRESS:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.venue_address}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.venue_address}</p>
               <label>PHONE:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.venue_phone}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.venue_phone}</p>
               <label>VENUE ACCESS:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.venue_access}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.venue_access}</p>
               <label>NEIGHBORHOOD:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.venue_area}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.venue_area}</p>
               <label>OPENING HOUR:</label>
               <p className='exhibition-detail'>{
-                this.props.selectedExhibition.venue_openinghour < 12
-                ? `${this.props.selectedExhibition.venue_openinghour} AM`
-                : `${this.props.selectedExhibition.venue_openinghour - 12} PM`
+                this.props.exhibition.venue_openinghour < 12
+                ? `${this.props.exhibition.venue_openinghour} AM`
+                : `${this.props.exhibition.venue_openinghour - 12} PM`
               }</p>
               <label>CLOSING HOUR:</label>
               <p className='exhibition-detail'>{
-                this.props.selectedExhibition.venue_closinghour < 12
-                ? `${this.props.selectedExhibition.venue_closinghour} AM`
-                : `${this.props.selectedExhibition.venue_closinghour - 12} PM`
+                this.props.exhibition.venue_closinghour < 12
+                ? `${this.props.exhibition.venue_closinghour} AM`
+                : `${this.props.exhibition.venue_closinghour - 12} PM`
               }</p>
               <label>PRICE:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.price}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.price}</p>
               <label>PERMANENT EVENT(?):</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.permanent_event === 0 ? "YES" : "NO"}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.permanent_event === 0 ? "YES" : "NO"}</p>
               <label>MEDIA:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.media}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.media}</p>
               <label>START DATE:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.start_date}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.start_date}</p>
               <label>END DATE:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.end_date}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.end_date}</p>
               <label>IMAGE:</label>
+              {/*<img src={imageArr ? imageArr[-1] : null} alt="" />*/}
             </div>
 
             <div className='exhibition-description'>
               <label>DESCRIPTION:</label>
-              <p className='exhibition-detail'>{this.props.selectedExhibition.description}</p>
+              <p className='exhibition-detail'>{this.props.exhibition.description}</p>
             </div>
         </div>
 
@@ -153,7 +166,7 @@ class ExhibitionProfile extends Component {
             <div>
               {
                 this.state.clicked === true
-                ? <ImpressionForm />
+                ? <ImpressionForm exhibition={this.props.exhibition}/>
                 : null
               }
             </div>
@@ -181,10 +194,10 @@ const mapStateToProps = (state) => {
 // from ACTION
 const mapDispatchToProps = (dispatch) => {
   return {
-    showExhibitionInfo: () => dispatch(showExhibitionInfo()),
+    showExhibitionInfo: (exObj) => dispatch(showExhibitionInfo(exObj)),
     postToSavedExhibition: (obj) => dispatch(postToSavedExhibition(obj)),
     getImpressions: () => dispatch(getImpressions()),
-    getSavedExhibitions: () => dispatch(getSavedExhibitions())
+    getSavedExhibitions: () => dispatch(getSavedExhibitions()),
   }
 }
 

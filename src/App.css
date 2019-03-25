@@ -521,18 +521,18 @@ input[type=submit] {
   color: white !important;
 }
 
-/* .impression-card {
+.impression-card {
   display: grid;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 10px;
-} */
+  /* margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 10px; */
+}
 
 .impression-card h2 {
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   font-weight: bold;
   margin: 0px 0px 0px 20px;
-  /* padding-top: 10px; */
+  padding-top: 10px;
 }
 
 .impression-card p {
