@@ -379,7 +379,7 @@ input[type=submit] {
   display: grid;
   font-family: 'Fjalla One';
   src: url('./FjallaOne-Regular.ttf');
-  background-color: white;
+  background-color: #ffbb00;
   padding: 45px 20px 45px 20px;
 }
 
@@ -393,7 +393,7 @@ input[type=submit] {
   display: grid;
   font-size: 40px;
   /* margin-top: 0px; */
-  color: white;
+  color: #ffbb00;
   background-color: black;
   margin: 25px auto auto 20px;
   padding: 0px 20px 0px 20px;
@@ -403,9 +403,11 @@ input[type=submit] {
 
 .exhibition-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr 25px;
   font-family: 'Montserrat', sans-serif;
   padding: 40px 25px 25px 25px;
+  background-color: white;
 }
 
 .exhibition-info label {
@@ -439,7 +441,7 @@ input[type=submit] {
   font-size: 22px;
   font-weight: bolder;
 
-  color: white;
+  color: #ffbb00;
   /* background-color: #FF0040; */
   background: linear-gradient(-45deg, #FF0040, #0e5782);
   width: 180px;
@@ -453,7 +455,8 @@ input[type=submit] {
 .impressions {
   display: grid;
   padding: 25px 25px 25px 25px;
-  grid-template-rows: 20% 1fr;
+  grid-template-rows: 70px 1fr;
+  background-color: white;
   /* border: 7px 0px 7px 0px;
   border-style: solid;
   border-width: thick;
@@ -468,7 +471,9 @@ input[type=submit] {
   margin: auto auto auto 20px;
 }
 
+
 .impressions button {
+  display: grid;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: bolder;
@@ -486,34 +491,47 @@ input[type=submit] {
 
 .first-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-bottom: 80px;
+  grid-template-columns: 50% 50%;
 }
+
 
 .second-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
+}
+
+.impression-form form {
+  display: grid;
+  grid-template-rows: 30px 80px 1fr;
+  grid-row-gap: 10px;
 }
 
 .impression-title {
+  display: grid;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
-  width: 600px !important;
+  width: 500px !important;
   height: 30px !important;
-  margin: 0px 0px 10px 20px;
+  margin: 0px 0px 0px 20px;
   padding: 0px 0px 0px 10px;
+  background-color: #eaeaea;
+  color: black;
 }
 
 .impression-content {
+  display: grid;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
-  width: 600px !important;
+  width: 500px !important;
   height: 80px !important;
   margin: 0px 0px 10px 20px;
-  padding: 0px 0px 0px 10px;
+  padding: 5px 0px 0px 10px;
+  background-color: #eaeaea;
+  border-width: 0px;
 }
 
 .impression-submit {
+  display: grid;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   margin: 0px 0px 0px 20px;
@@ -523,23 +541,35 @@ input[type=submit] {
 
 .impression-card {
   display: grid;
-  /* margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 10px; */
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 20px;
 }
 
 .impression-card h2 {
-  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   font-weight: bold;
-  margin: 0px 0px 0px 20px;
-  padding-top: 10px;
+  margin: 0px 20px 0px 20px;
+  padding-bottom: 10px;
 }
 
 .impression-card p {
-  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: lighter;
-  margin: 0px 0px 0px 20px;
-  padding-top: 10px;
-  padding-bottom: 20px;
+  margin: 0px 20px 0px 20px;
+  padding-bottom: 10px;
+}
+
+.impression-card h4 {
+  font-size: 15px;
+  margin: 0px 20px 0px 20px;
+  padding-bottom: 10px;
+}
+
+
+
+
+.makeshift-dividing-line h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0px 0px 0px 0px;
 }

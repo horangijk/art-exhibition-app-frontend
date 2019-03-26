@@ -25,27 +25,34 @@ class ImpressionForm extends Component {
 
   render () {
     return (
-      <div>
+      <div className='impression-form'>
         <form onSubmit={this.submitHandler}>
-          <input
-            type="text"
-            name="title" value={this.state.title}
-            onChange={this.changeHandler}
-            placeholder="Title"
-            className="impression-title"
-          />
-          <input
-            type="text"
-            name="content"
-            value={this.state.content}
-            onChange={this.changeHandler}
-            placeholder="Content"
-            className="impression-content"
-          />
-          <input
-            type="submit"
-            className="impression-submit"
-          />
+          <div>
+            <input
+              type="text"
+              name="title" value={this.state.title}
+              onChange={this.changeHandler}
+              placeholder="Title"
+              className="impression-title"
+            />
+          </div>
+          <div>
+            <textarea
+              type="text"
+              name="content"
+              value={this.state.content}
+              onChange={this.changeHandler}
+              placeholder="Content"
+              className="impression-content"
+            />
+            <br/>
+          </div>
+          <div>
+            <input
+              type="submit"
+              className="impression-submit"
+            />
+          </div>
         </form>
       </div>
     )

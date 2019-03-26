@@ -144,10 +144,16 @@ class ExhibitionProfile extends Component {
               <label>DESCRIPTION:</label>
               <p className='exhibition-detail'>{this.props.exhibition.description}</p>
             </div>
+
+            <div className='makeshift-dividing-line'>
+              <h2>_____________________________________________</h2>
+            </div>
+
         </div>
 
 
         <div className='impressions'>
+
           <div className="first-row">
             <div>
               <h2>IMPRESSIONS</h2>

@@ -9,6 +9,7 @@ class SignupForm extends Component {
     full_name: "",
     email: "",
     password_digest: "",
+    occupation: "",
     home_neighborhood: ""
   }
 
@@ -19,17 +20,17 @@ class SignupForm extends Component {
   }
 
   submitHandler = (event) => {
-    event.preventDefault()
     const newUser = this.state
     this.props.createUser(newUser)
+    return <Redirect to='/home'/>
   }
 
   render() {
-
     if (!!localStorage.token){
       localStorage.clear()
       return <Redirect to='/home'/>
     }
+
 
     return (
       <div className='content'>
@@ -45,6 +46,9 @@ class SignupForm extends Component {
             <br/>
             <label>Password:</label>
             <input type="password" name="password_digest" value={this.state.password_digest} onChange={this.changeHandler}/>
+            <br/>
+            <label>Occupation:</label>
+            <input type="text" name="occupation" value={this.state.occupation} onChange={this.changeHandler}/>
             <br/>
             <label>Hometown:</label>
             <input type="text" name="home_neighborhood" value={this.state.home_neighborhood} onChange={this.changeHandler}/>
@@ -68,11 +72,11 @@ class SignupForm extends Component {
 //   }
 // }
 //
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addUser: (userObj) => dispatch(createUser(userObj))
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createUser: (userObj) => dispatch(createUser(userObj))
+  }
+}
 
 
-export default connect( null, {createUser} )(SignupForm)
+export default connect( null, mapDispatchToProps )(SignupForm)

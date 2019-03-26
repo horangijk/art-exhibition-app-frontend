@@ -174,7 +174,7 @@ class App extends Component {
               <div className="main-container">
                 <Switch>
                   <Route path='/home' component={Homepage} />
-                  <Route path='/users/:id' component={UserProfile} />
+                  <Route path='/users/:id' component={UserProfile}/>
                   <Route path='/login' component={LoginForm} />
                   <Route path='/register' component={SignupForm} />
                   <Route path='/index' render={()=>{
