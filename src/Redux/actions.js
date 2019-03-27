@@ -39,6 +39,7 @@ export function createUser(userObj) {
       .then(user => {
         localStorage.setItem("token", user.jwt);
         dispatch(addUser(user));
+        // dispatch(signInUser(user));
       })
       .catch(console.error)
   }

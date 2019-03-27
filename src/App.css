@@ -94,8 +94,7 @@ body {
   text-align: left;
   font-family: 'Fjalla One';
   src: url('./FjallaOne-Regular.ttf');
-  font-size: 18px;
-  font-size: 2vw;
+  font-size: 16px;
   padding: 20px 10px 10px 10px;
   margin-left: 12px;
   margin-right: 12px;
@@ -108,7 +107,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   /* font-weight: bold; */
   font-size: 14px;
-  font-size: 0.9vw;
   text-align: center;
   width: 100px;
   height: 25px;
@@ -153,23 +151,21 @@ body {
   background-position: 60% 80%;
   /* width: 100%; */
   background-size: cover;
+  filter: invert(100%);
   /* opacity: 0.8; */
 }
 
 .image-container:hover {
   /* opacity: 0.5;
   filter: blur(15px); */
-  filter: invert(100%);
+  filter: invert(0%);
 }
 
 .exhibition-container {
-  /* display: grid; */
-  /* grid-template-rows: 50px 1fr; */
   /* background: linear-gradient(45deg, #FFCC00, #ffbb00); */
-  background-color: #ffbb00;
   width: 100%;
   height: 100%;
-  margin: auto;
+  margin: 0px 0px 0px 0px;
 }
 
 
@@ -187,7 +183,7 @@ body {
   src: url('./FjallaOne-Regular.ttf');
   font-size: 40px;
   /* background-color: black; */
-  padding: 0px 20px 0px 20px;
+  padding: 35px 20px 0px 20px;
 }
 
 .exhibition-list {
@@ -232,7 +228,7 @@ body {
 
 .card-name {
   display: inline-block;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: bold;
   line-height: 1.1;
 }
@@ -519,7 +515,7 @@ input[type=submit] {
 
 .impression-form form {
   display: grid;
-  grid-template-rows: 30px 80px 1fr;
+  grid-template-rows: 30px 180px 1fr;
   grid-row-gap: 10px;
 }
 
@@ -540,7 +536,7 @@ input[type=submit] {
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   width: 500px !important;
-  height: 80px !important;
+  height: 180px !important;
   margin: 0px 0px 10px 20px;
   padding: 5px 0px 0px 10px;
   background-color: #eaeaea;
@@ -655,6 +651,7 @@ input[type=submit] {
 
 .exhibition-description {
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .exhibition-description p {

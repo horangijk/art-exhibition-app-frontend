@@ -65,9 +65,6 @@ const reducer = (state = initialState, action) => {
     }
 
 
-// LEFT OFF HERE
-// FIX BACKGROUND IMAGE ON HOMEPAGE
-
     case "LOAD_SAVED_EXHIBITIONS": {
       return {...state, usersSavedExhibitions: action.payload}
     }
