@@ -38,31 +38,13 @@ class ExhibitionCard extends Component {
   }
 }
 
-// <Card
-//   className='card'
-//   width={360}
-//   fontSize={1}
-//   fontWeight='bold'
-//   pt={2}
-//   pl={3}
-//   pr={3}
-//   my={5}
-//   bg='#efede6'
-//   borderRadius={2}
-//   boxShadow='0 2px 8px rgba(0, 0, 0, 0.25)'
-//
-//   onClick={() => this.props.showExhibitionInfo(this.props.exhibition)}
-// >
 
-
-// from REDUCER
 const mapStateToProps = (state) => {
   return {
     selectedExhibition: state.selectedExhibition
   }
 }
 
-// from ACTION
 const mapDispatchToProps = (dispatch) => {
   return {
     showExhibitionInfo: (exhibition) => dispatch(showExhibitionInfo(exhibition))

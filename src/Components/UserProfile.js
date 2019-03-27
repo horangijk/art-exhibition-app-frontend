@@ -16,7 +16,7 @@ class UserProfile extends Component {
     if (this.props.usersSavedExhibitions.length > 0) {
       interestedExhibitions = this.props.usersSavedExhibitions.map(exhib => {
         return this.props.exhibitions.find(exObj => {
-          return exObj.id === exhib.exhibition_id
+          return (exObj.id === exhib.exhibition_id) && this.props.loggedInUser.id === exhib.user_id
         })
       })
       interestedExhibitions = interestedExhibitions.filter(exObj => exObj !== undefined)

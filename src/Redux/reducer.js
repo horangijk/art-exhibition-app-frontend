@@ -24,6 +24,10 @@ const reducer = (state = initialState, action) => {
       return {...state, user: action.payload}
     }
 
+    case "LOAD_USERS": {
+      return {...state, allUsers: action.payload}
+    }
+
     case "SIGN_IN_USER": {
       return {...state, loggedInUser: action.payload}
     }
@@ -41,15 +45,23 @@ const reducer = (state = initialState, action) => {
     }
 
     case "SAVE_EXHIB": {
-      return {...state, savedExhibitions: action.payload}
+      return {...state, usersSavedExhibitions: [...state.usersSavedExhibitions, action.payload]}
     }
 
     case "CREATE_IMPRESSION": {
-      return {...state, createdImpression: action.payload}
+      return {...state, allImpressions: [...state.allImpressions, action.payload]}
     }
 
     case "LOAD_IMPRESSIONS": {
       return {...state, allImpressions: action.payload}
+    }
+
+    case "REMOVE_SAVED_EXHIBITION": {
+      let newArr = state.savedExhibitions.filter(exhib => {
+        return exhib !== action.payload
+      })
+
+      return {...state, usersSavedExhibitions: newArr}
     }
 
 

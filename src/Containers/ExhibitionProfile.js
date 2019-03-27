@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { showExhibitionInfo, postToSavedExhibition, getImpressions, getSavedExhibitions } from '../Redux/actions.js'
+import {
+  showExhibitionInfo,
+  postToSavedExhibition,
+  getImpressions,
+  getSavedExhibitions,
+  getUsers,
+  deleteSavedExhibition
+} from '../Redux/actions.js'
 import ImpressionForm from '../Components/ImpressionForm'
 import ImpressionCard from '../Components/ImpressionCard'
 
@@ -10,6 +16,7 @@ class ExhibitionProfile extends Component {
     this.props.getImpressions()
     this.props.getSavedExhibitions()
     this.props.showExhibitionInfo(this.props.exhibition)
+    this.props.getUsers()
   }
 
 
@@ -33,13 +40,21 @@ class ExhibitionProfile extends Component {
     //   return exObj !== undefined
     // })
 
-    // if (savedExhibitionObjArr.length > 0) {
-      if (!savedExhibitionObjArr.includes(this.props.selectedExhibition)) {
-        this.props.postToSavedExhibition({user_id: this.state.user_id, exhibition_id: this.props.exhibition.id});
+    let savedExObj
+    if (!savedExhibitionObjArr.includes(this.props.exhibition)) {
+      this.props.postToSavedExhibition({user_id: this.state.user_id, exhibition_id: this.props.exhibition.id});
+    } else {
+      if (this.props.usersSavedExhibitions) {
+        savedExObj = this.props.usersSavedExhibitions.find(exhib => {
+          return exhib.exhibition_id === this.props.exhibition.id
+        })
+        if (savedExObj.id) {
+          this.props.deleteSavedExhibition(savedExObj)
+        }
       }
-    // }
-  }
+    }
 
+  }
 
   impressionHandler = () => {
     this.setState({
@@ -60,22 +75,21 @@ class ExhibitionProfile extends Component {
     let impressionCards
     if (exhibitionImpressions) {
       impressionCards = exhibitionImpressions.map(impObj => {
-        return <ImpressionCard key={impObj.id} impressionObj={impObj}/>
+        return <ImpressionCard key={impObj.id} impressionObj={impObj} users={this.props.allUsers}/>
       })
     }
 
 
     // let imageArr
-    // if (this.props.exhibition) {
+    // if (this.props.exhibition.length > 0) {
     //   imageArr = this.props.exhibition.image.map(imgObj => {
     //     return imgObj['src']
     //   })
     // }
-
     // imageArr = imageArr.filter(img => img !== undefined)
-    //
-    console.log(this.props.exhibition.image)
-    console.log(this.props.loggedInUser);
+
+    // console.log(this.props.exhibition.image.split(/ {"src"=>"|",|"=>"|"width"/)[7])
+
 
     let exhibitionName
     if (this.props.exhibition) {
@@ -85,6 +99,18 @@ class ExhibitionProfile extends Component {
         }
       })
     }
+
+    let savedExhibitionObjArr
+    if (this.props.usersSavedExhibitions) {
+      savedExhibitionObjArr = this.props.usersSavedExhibitions.map(exObj1 => {
+        return this.props.exhibitions.find(exObj2 => {
+          return exObj2.id === exObj1.exhibition_id
+        })
+      })
+    }
+
+    let isInterested = savedExhibitionObjArr.includes(this.props.exhibition)
+
 
     return (
       <div className='exhibition-profile'>
@@ -97,13 +123,17 @@ class ExhibitionProfile extends Component {
               <h4>DAYS REMAINING: {this.props.exhibition.days_remaining}</h4>
             </div>
             <div className='button-container'>
-              <Link to={`/users/${this.props.loggedInUser.id}`} key={this.props.loggedInUser.id}><button onClick={this.clickHandler} className='interested-button'>INTERESTED</button></Link>
+
+                <button onClick={this.clickHandler} className='interested-button'>
+                  INTERESTED { !!isInterested ? "✓" : null}
+                </button>
+
             </div>
           </div>
         </div>
 
         <div className='exhibition-info'>
-            <div>
+            <div className='exhibition-column-1'>
               <label>VENUE:</label>
               <p className='exhibition-detail'>{this.props.exhibition.venue_name}</p>
               <label>ADDRESS:</label>
@@ -136,8 +166,6 @@ class ExhibitionProfile extends Component {
               <p className='exhibition-detail'>{this.props.exhibition.start_date}</p>
               <label>END DATE:</label>
               <p className='exhibition-detail'>{this.props.exhibition.end_date}</p>
-              <label>IMAGE:</label>
-              {/*<img src={imageArr ? imageArr[-1] : null} alt="" />*/}
             </div>
 
             <div className='exhibition-description'>
@@ -146,7 +174,7 @@ class ExhibitionProfile extends Component {
             </div>
 
             <div className='makeshift-dividing-line'>
-              <h2>_____________________________________________</h2>
+              <h2>_______________________________________________________________</h2>
             </div>
 
         </div>
@@ -185,6 +213,9 @@ class ExhibitionProfile extends Component {
   }
 }
 
+// <img src={this.props.exhibition.image.split(/ {"src"=>"|",|"=>"|"width"/)[7]} alt="" className='exhibition-image'/>
+// <br/>
+
 
 // from REDUCER
 const mapStateToProps = (state) => {
@@ -193,7 +224,8 @@ const mapStateToProps = (state) => {
     selectedExhibition: state.selectedExhibition,
     loggedInUser: state.loggedInUser,
     allImpressions: state.allImpressions,
-    usersSavedExhibitions: state.usersSavedExhibitions
+    usersSavedExhibitions: state.usersSavedExhibitions,
+    allUsers: state.allUsers
   }
 }
 
@@ -204,6 +236,8 @@ const mapDispatchToProps = (dispatch) => {
     postToSavedExhibition: (obj) => dispatch(postToSavedExhibition(obj)),
     getImpressions: () => dispatch(getImpressions()),
     getSavedExhibitions: () => dispatch(getSavedExhibitions()),
+    getUsers: () => dispatch(getUsers()),
+    deleteSavedExhibition: (exhibObj) => dispatch(deleteSavedExhibition(exhibObj))
   }
 }
 

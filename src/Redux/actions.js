@@ -99,6 +99,20 @@ export const getCurrentUserProfile = userObj => {
 }
 
 
+const loadUsers = (users) => ({
+  type: "LOAD_USERS",
+  payload: users
+})
+
+export const getUsers = () => dispatch => {
+  return fetch('http://localhost:3000/api/v1/users')
+    .then(res => res.json())
+    .then(data => dispatch(loadUsers(data)))
+    .catch(console.error)
+}
+
+
+
 const getExhibitionInfo = (exhibObj) => ({
   type: "GET_EXHIB_INFO",
   payload: exhibObj
@@ -121,7 +135,6 @@ const saveExhibition = (obj) => ({
 })
 
 export function postToSavedExhibition(obj) {
-  console.log(obj);
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/saved_exhibitions', {
       method: "POST",
@@ -133,7 +146,6 @@ export function postToSavedExhibition(obj) {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         dispatch(saveExhibition(data))
       })
       .catch(console.error)
@@ -190,5 +202,23 @@ export function getImpressions(impressions) {
     return fetch('http://localhost:3000/api/v1/impressions')
       .then(res => res.json())
       .then(data => dispatch(loadAllImpressions(data)))
+  }
+}
+
+
+const removeSavedExhibition = (savedExObj) => ({
+  type: "REMOVE_SAVED_EXHIBITION",
+  payload: savedExObj
+})
+
+export function deleteSavedExhibition(savedExObj) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/api/v1/saved_exhibitions/${savedExObj.id}`, {
+      method: "DELETE"
+    })
+      .then(res => res.json())
+      .then(data => {
+        dispatch(removeSavedExhibition(data))
+      })
   }
 }

@@ -32,24 +32,25 @@ class LoginForm extends Component {
     }
 
     return (
+      <div className="login-container">
+          <div>
+          </div>
 
-      <div className='content'>
-        <div>
+          <div className='login'>
           <h2>LOGIN</h2>
-          <form onSubmit={this.submitHandler}>
-            <label>Email:</label>
-            <input type="text" name="email" value={this.state.email} onChange={this.changeHandler}/>
-            <br/>
-            <label>Password:</label>
-            <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
-            <br/>
-            <input type="submit"/>
-          </form>
-        </div>
+            <form onSubmit={this.submitHandler}>
+              <label>Email</label>
+              <input type="text" name="email" value={this.state.email} onChange={this.changeHandler}/>
+              <br/>
+              <label>Password</label>
+              <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
+              <br/>
+              <input type="submit" className="form-submit"/>
+            </form>
+          </div>
 
-        <div>
-        </div>
-
+          <div>
+          </div>
       </div>
 
     )

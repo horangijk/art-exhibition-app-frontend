@@ -8,7 +8,7 @@ class SignupForm extends Component {
   state = {
     full_name: "",
     email: "",
-    password_digest: "",
+    password: "",
     occupation: "",
     home_neighborhood: ""
   }
@@ -20,6 +20,7 @@ class SignupForm extends Component {
   }
 
   submitHandler = (event) => {
+    event.preventDefault()
     const newUser = this.state
     this.props.createUser(newUser)
     return <Redirect to='/home'/>
@@ -33,27 +34,30 @@ class SignupForm extends Component {
 
 
     return (
-      <div className='content'>
+      <div className='login-container'>
 
         <div>
+        </div>
+
+        <div className='login'>
           <h2>REGISTER</h2>
           <form onSubmit={this.submitHandler}>
-            <label>Full Name:</label>
+            <label>Full Name</label>
             <input type="text" name="full_name" value={this.state.full_name} onChange={this.changeHandler}/>
             <br/>
-            <label>Email:</label>
+            <label>Email</label>
             <input type="text" name="email" value={this.state.email} onChange={this.changeHandler}/>
             <br/>
-            <label>Password:</label>
-            <input type="password" name="password_digest" value={this.state.password_digest} onChange={this.changeHandler}/>
+            <label>Password</label>
+            <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
             <br/>
-            <label>Occupation:</label>
+            <label>Occupation</label>
             <input type="text" name="occupation" value={this.state.occupation} onChange={this.changeHandler}/>
             <br/>
-            <label>Hometown:</label>
+            <label>Hometown</label>
             <input type="text" name="home_neighborhood" value={this.state.home_neighborhood} onChange={this.changeHandler}/>
             <br/>
-            <input type="submit"/>
+            <input type="submit" className="form-submit"/>
           </form>
         </div>
 
