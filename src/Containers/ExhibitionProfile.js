@@ -148,8 +148,10 @@ class ExhibitionProfile extends Component {
                 <label>OPENING HOUR:</label>
                 <p className='exhibition-detail'>{
                   this.props.exhibition.venue_openinghour < 12
-                  ? `${this.props.exhibition.venue_openinghour} AM`
-                  : `${this.props.exhibition.venue_openinghour - 12} PM`
+                  ? `${this.props.exhibition.venue_openinghour} AM` :
+                  this.props.exhibition.venue_openinghour > 12
+                  ? `${this.props.exhibition.venue_openinghour - 12} PM`
+                  : '12 PM'
                 }</p>
                 <label>CLOSING HOUR:</label>
                 <p className='exhibition-detail'>{

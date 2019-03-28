@@ -19,6 +19,8 @@ class ImpressionForm extends Component {
 
   submitHandler = (event) => {
     event.preventDefault()
+    document.querySelector('#title').value = ""
+    document.querySelector('#content').value = ""
     this.props.postToExhibitionImpressions(this.state)
   }
 
@@ -29,6 +31,7 @@ class ImpressionForm extends Component {
         <form onSubmit={this.submitHandler}>
           <div>
             <input
+              id='title'
               type="text"
               name="title" value={this.state.title}
               onChange={this.changeHandler}
@@ -38,6 +41,7 @@ class ImpressionForm extends Component {
           </div>
           <div>
             <textarea
+              id='content'
               type="text"
               name="content"
               value={this.state.content}
