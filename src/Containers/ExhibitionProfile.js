@@ -113,71 +113,69 @@ class ExhibitionProfile extends Component {
 
 
     return (
+    <div className="exhibition-content">
       <div className='exhibition-profile'>
 
         <div className='exhibition-heading'>
-          <h1>{exhibitionName}</h1>
-          <h1>_______________</h1>
-          <div className='heading-columns'>
-            <div>
-              <h4>DAYS REMAINING: {this.props.exhibition.days_remaining}</h4>
-            </div>
-            <div className='button-container'>
+            <h1>{exhibitionName}</h1>
+            <h1>_______________</h1>
+            <div className='heading-columns'>
+              <div>
+                <h4>DAYS REMAINING: {this.props.exhibition.days_remaining}</h4>
+              </div>
+              <div className='button-container'>
 
-                <button onClick={this.clickHandler} className='interested-button'>
-                  INTERESTED { !!isInterested ? "✓" : null}
-                </button>
+                  <button onClick={this.clickHandler} className='interested-button'>
+                    INTERESTED { !!isInterested ? "✓" : null}
+                  </button>
 
+              </div>
             </div>
-          </div>
         </div>
 
         <div className='exhibition-info'>
             <div className='exhibition-column-1'>
-              <label>VENUE:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.venue_name}</p>
-              <label>ADDRESS:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.venue_address}</p>
-              <label>PHONE:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.venue_phone}</p>
-              <label>VENUE ACCESS:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.venue_access}</p>
-              <label>NEIGHBORHOOD:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.venue_area}</p>
-              <label>OPENING HOUR:</label>
-              <p className='exhibition-detail'>{
-                this.props.exhibition.venue_openinghour < 12
-                ? `${this.props.exhibition.venue_openinghour} AM`
-                : `${this.props.exhibition.venue_openinghour - 12} PM`
-              }</p>
-              <label>CLOSING HOUR:</label>
-              <p className='exhibition-detail'>{
-                this.props.exhibition.venue_closinghour < 12
-                ? `${this.props.exhibition.venue_closinghour} AM`
-                : `${this.props.exhibition.venue_closinghour - 12} PM`
-              }</p>
-              <label>PRICE:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.price}</p>
-              <label>PERMANENT EVENT(?):</label>
-              <p className='exhibition-detail'>{this.props.exhibition.permanent_event === 0 ? "YES" : "NO"}</p>
-              <label>MEDIA:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.media}</p>
-              <label>START DATE:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.start_date}</p>
-              <label>END DATE:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.end_date}</p>
+                <label>VENUE:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.venue_name}</p>
+                <label>ADDRESS:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.venue_address}</p>
+                <label>PHONE:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.venue_phone}</p>
+                <label>VENUE ACCESS:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.venue_access}</p>
+                <label>NEIGHBORHOOD:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.venue_area}</p>
+                <label>OPENING HOUR:</label>
+                <p className='exhibition-detail'>{
+                  this.props.exhibition.venue_openinghour < 12
+                  ? `${this.props.exhibition.venue_openinghour} AM`
+                  : `${this.props.exhibition.venue_openinghour - 12} PM`
+                }</p>
+                <label>CLOSING HOUR:</label>
+                <p className='exhibition-detail'>{
+                  this.props.exhibition.venue_closinghour < 12
+                  ? `${this.props.exhibition.venue_closinghour} AM`
+                  : `${this.props.exhibition.venue_closinghour - 12} PM`
+                }</p>
+                <label>PRICE:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.price}</p>
+                <label>PERMANENT EVENT(?):</label>
+                <p className='exhibition-detail'>{this.props.exhibition.permanent_event === 0 ? "YES" : "NO"}</p>
+                <label>MEDIA:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.media}</p>
+                <label>START DATE:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.start_date}</p>
+                <label>END DATE:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.end_date}</p>
             </div>
 
             <div className='exhibition-description'>
-              <label>DESCRIPTION:</label>
-              <p className='exhibition-detail'>{this.props.exhibition.description}</p>
-            </div>
-
-            <div className='makeshift-dividing-line'>
-              <h2>_______________________________________________________________</h2>
+                <label>DESCRIPTION:</label>
+                <p className='exhibition-detail'>{this.props.exhibition.description}</p>
             </div>
 
         </div>
+      </div>
 
 
         <div className='impressions'>
