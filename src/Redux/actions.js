@@ -154,9 +154,6 @@ export function postToSavedExhibition(obj) {
 }
 
 
-// LEFT OFF HERE
-// FIX BACKGROUND IMAGE ON HOMEPAGE
-
 const loadSavedExhibitions = (exhibitions) => ({
   type: "LOAD_SAVED_EXHIBITIONS",
   payload: exhibitions
@@ -221,5 +218,16 @@ export function deleteSavedExhibition(savedExObj) {
       .then(data => {
         dispatch(removeSavedExhibition(data))
       })
+  }
+}
+
+const removeLoggedInUser = () => ({
+  type: "LOG_OUT_USER",
+  payload: {}
+})
+
+export function logOutUser() {
+  return (dispatch) => {
+    dispatch(removeLoggedInUser())
   }
 }

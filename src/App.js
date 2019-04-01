@@ -9,7 +9,7 @@ import UserProfile from './Components/UserProfile'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { showExhibitionInfo, getCurrentUserProfile } from './Redux/actions.js'
+import { showExhibitionInfo, getCurrentUserProfile, logOutUser } from './Redux/actions.js'
 
 // import ExhibitionProfile from './Containers/ExhibitionProfile'
 
@@ -89,8 +89,10 @@ class App extends Component {
     })
   }
 
-
-
+  signOutHandler = () => {
+    localStorage.clear()
+    this.props.logOutUser()
+  }
 
   render() {
     return (
@@ -100,10 +102,17 @@ class App extends Component {
 
             <div className='navbar'>
                 <div className='navbar-menu'>
-                  <Link to='/home' className='navbar-options'>HOME</Link>
-                  <Link to='/login' className='navbar-options'>{localStorage.token ? "PROFILE" : "LOGIN"}</Link>
-                  {/*<span id='dash'>/</span>*/}
-                  <Link to='/register' className='navbar-options'>{localStorage.token ? "SIGN OUT" : "REGISTER"}</Link>
+                  <Link to='/' className='navbar-options'>HOME</Link>
+                  {
+                    !!this.props.loggedInUser.id
+                    ? <Link to={`/users/${this.props.loggedInUser.id}`} className='navbar-options'>PROFILE</Link>
+                    : <Link to='/login' className='navbar-options'>LOGIN</Link>
+                  }
+                  {
+                    !!this.props.loggedInUser.id
+                    ? <Link to='/' className='navbar-options' onClick={this.signOutHandler}>SIGN OUT</Link>
+                    : <Link to='/register' className='navbar-options'>REGISTER</Link>
+                  }
                   <Link to='/index' id='index-header'>INDEX</Link>
                 </div>
             </div>
@@ -173,7 +182,7 @@ class App extends Component {
 
               <div className="main-container">
                 <Switch>
-                  <Route path='/home' component={Homepage} />
+                  <Route path='/' component={Homepage} exact/>
                   <Route path='/users/:id' component={UserProfile}/>
                   <Route path='/login' component={LoginForm} />
                   <Route path='/register' component={SignupForm} />
@@ -212,7 +221,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     showExhibitionInfo: () => dispatch(showExhibitionInfo()),
-    getCurrentUserProfile: ()=>dispatch(getCurrentUserProfile())
+    getCurrentUserProfile: ()=>dispatch(getCurrentUserProfile()),
+    logOutUser: ()=>dispatch(logOutUser())
   }
 }
 

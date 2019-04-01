@@ -22,13 +22,15 @@ class LoginForm extends Component {
     event.preventDefault()
     let currentUser = this.state
     this.props.getCurrentUser(currentUser)
+
+    // return <Redirect to={`/users/${this.props.loggedInUser.id}`}/>
+
   }
 
 
   render() {
-
-    if (!!localStorage.token){
-      return <Redirect to={`/users/${this.props.loggedInUser.id}`}/>
+    if (!!this.props.loggedInUser.id){
+        return <Redirect to={`/users/${this.props.loggedInUser.id}`}/>
     }
 
     return (

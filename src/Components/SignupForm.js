@@ -23,14 +23,14 @@ class SignupForm extends Component {
     event.preventDefault()
     const newUser = this.state
     this.props.createUser(newUser)
-    return <Redirect to='/home'/>
+    return <Redirect to='/'/>
   }
 
+  // if (!!localStorage.token){
+    //   localStorage.clear()
+    //   return <Redirect to='/'/>
+    // }
   render() {
-    if (!!localStorage.token){
-      localStorage.clear()
-      return <Redirect to='/home'/>
-    }
 
 
     return (
