@@ -28,15 +28,15 @@ class App extends Component {
     this.props.getCurrentUserProfile()
   }
 
-  componentWillUnmount() {
-    this.setState({
-      searchedExhibitions: this.props.exhibitions,
-      checkedExhibitions: this.props.exhibitions,
-      searchTerm: '',
-      inputType: '',
-      checkedBoxes: []
-    })
-  }
+  // componentDidUnmount() {
+  //   this.setState({
+  //     searchedExhibitions: this.props.exhibitions,
+  //     checkedExhibitions: this.props.exhibitions,
+  //     searchTerm: '',
+  //     inputType: '',
+  //     checkedBoxes: []
+  //   })
+  // }
 
   checkHandler = (event) => {
     this.setState({
@@ -70,12 +70,6 @@ class App extends Component {
       })
     }
 
-    // else {
-    //   this.setState({
-    //     checkedExhibitions: this.props.exhibitions
-    //   })
-    // }
-
   }
 
   searchHandler = (event) => {
@@ -94,6 +88,16 @@ class App extends Component {
     this.props.logOutUser()
   }
 
+  clearInputHandler = () => {
+    this.setState({
+      searchedExhibitions: this.props.exhibitions,
+      checkedExhibitions: this.props.exhibitions,
+      searchTerm: '',
+      inputType: '',
+      checkedBoxes: []
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -102,16 +106,16 @@ class App extends Component {
 
             <div className='navbar'>
                 <div className='navbar-menu'>
-                  <Link to='/' className='navbar-options'>HOME</Link>
+                  <Link to='/' className='navbar-options' onClick={this.clearInputHandler}>HOME</Link>
                   {
                     !!this.props.loggedInUser.id
-                    ? <Link to={`/users/${this.props.loggedInUser.id}`} className='navbar-options'>PROFILE</Link>
-                    : <Link to='/login' className='navbar-options'>LOGIN</Link>
+                    ? <Link to={`/users/${this.props.loggedInUser.id}`} className='navbar-options' onClick={this.clearInputHandler}>PROFILE</Link>
+                    : <Link to='/login' className='navbar-options' onClick={this.clearInputHandler}>LOGIN</Link>
                   }
                   {
                     !!this.props.loggedInUser.id
-                    ? <Link to='/' className='navbar-options' onClick={this.signOutHandler}>SIGN OUT</Link>
-                    : <Link to='/register' className='navbar-options'>REGISTER</Link>
+                    ? <Link to='/' className='navbar-options' onClick={this.signOutHandler} onClick={this.clearInputHandler}>SIGN OUT</Link>
+                    : <Link to='/register' className='navbar-options' onClick={this.clearInputHandler}>REGISTER</Link>
                   }
                   <Link to='/index' id='index-header'>INDEX</Link>
                 </div>
@@ -133,18 +137,18 @@ class App extends Component {
                     <div className='neighborhood-filter'>
                       <label className='menu-header'>Neighborhood</label>
                       <form className='checkbox-input'>
-                        <input type="checkbox" name="Upper East Side" onChange={this.checkHandler}/>UPPER EAST SIDE<br/>
-                        <input type="checkbox" name="Midtown" onChange={this.checkHandler}/>MIDTOWN<br/>
-                        <input type="checkbox" name="Flatiron, Gramercy" onChange={this.checkHandler}/>FLATIRON/GRAMERCY<br/>
-                        <input type="checkbox" name="Chelsea" onChange={this.checkHandler}/>CHELSEA<br/>
-                        <input type="checkbox" name="Villages" onChange={this.checkHandler}/>THE VILLAGES<br/>
-                        <input type="checkbox" name="Soho" onChange={this.checkHandler}/>SOHO<br/>
-                        <input type="checkbox" name="Lower East Side" onChange={this.checkHandler}/>LOWER EAST SIDE<br/>
-                        <input type="checkbox" name="Lower Manhattan" onChange={this.checkHandler}/>LOWER MANHATTAN<br/>
-                        <input type="checkbox" name="Queens" onChange={this.checkHandler}/>QUEENS<br/>
-                        <input type="checkbox" name="Harlem, Bronx" onChange={this.checkHandler}/>HARLEM/BRONX<br/>
-                        <input type="checkbox" name="Williamsburg" onChange={this.checkHandler}/>WILLIAMSBURG<br/>
-                        <input type="checkbox" name="Dumbo" onChange={this.checkHandler}/>DUMBO<br/>
+                        <input type="checkbox" name="Upper East Side" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Upper East Side") ? true : false}/>UPPER EAST SIDE<br/>
+                        <input type="checkbox" name="Midtown" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Midtown") ? true : false}/>MIDTOWN<br/>
+                        <input type="checkbox" name="Flatiron, Gramercy" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Flatiron, Gramercy") ? true : false}/>FLATIRON/GRAMERCY<br/>
+                        <input type="checkbox" name="Chelsea" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Chelsea") ? true : false}/>CHELSEA<br/>
+                        <input type="checkbox" name="Villages" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Villages") ? true : false}/>THE VILLAGES<br/>
+                        <input type="checkbox" name="Soho" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Soho") ? true : false}/>SOHO<br/>
+                        <input type="checkbox" name="Lower East Side" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Lower East Side") ? true : false}/>LOWER EAST SIDE<br/>
+                        <input type="checkbox" name="Lower Manhattan" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Lower Manhattan") ? true : false}/>LOWER MANHATTAN<br/>
+                        <input type="checkbox" name="Queens" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Queens") ? true : false}/>QUEENS<br/>
+                        <input type="checkbox" name="Harlem, Bronx" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Harlem, Bronx") ? true : false}/>HARLEM/BRONX<br/>
+                        <input type="checkbox" name="Bushwick" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("Bushwick") ? true : false}/>BUSHWICK<br/>
+                        <input type="checkbox" name="DUMBO, other Brooklyn" onChange={this.checkHandler} checked={this.state.checkedBoxes.includes("DUMBO, other Brooklyn") ? true : false}/>DUMBO<br/>
                         <Link to='/index'><input type='submit'/></Link>
                       </form>
                     </div>
