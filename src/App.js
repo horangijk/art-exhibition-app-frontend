@@ -11,8 +11,6 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { showExhibitionInfo, getCurrentUserProfile, logOutUser } from './Redux/actions.js'
 
-// import ExhibitionProfile from './Containers/ExhibitionProfile'
-
 
 class App extends Component {
 
@@ -50,7 +48,7 @@ class App extends Component {
     if (event.target.checked) {
       this.setState({
         checkedBoxes: [...this.state.checkedBoxes, event.target.name],
-        checkedExhibitions: [...this.state.checkedExhibitions, ...checkedExhibitions]
+        checkedExhibitions: [...checkedExhibitions, ...this.state.checkedExhibitions]
       })
     }
 
@@ -103,11 +101,14 @@ class App extends Component {
       // checkedExhibitions: this.props.exhibitions,
       searchTerm: '',
       inputType: '',
-      checkedBoxes: []
+      checkedBoxes: [],
+      checkedExhibitions: []
     })
   }
 
   render() {
+    console.log(this.state.checkedBoxes);
+
     return (
       <BrowserRouter>
       <Fragment>
@@ -217,11 +218,8 @@ class App extends Component {
     );
   }
 }
-// this.state.inputType === 'checkbox' ? this.state.checkedExhibitions : this.state.searchedExhibitions
 
 
-
-// from REDUCER
 const mapStateToProps = (state) => {
   return {
     selectedExhibition: state.selectedExhibition,
@@ -230,7 +228,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-// from ACTION
 const mapDispatchToProps = (dispatch) => {
   return {
     showExhibitionInfo: () => dispatch(showExhibitionInfo()),

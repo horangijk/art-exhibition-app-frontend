@@ -54,6 +54,10 @@ class ExhibitionProfile extends Component {
       }
     }
 
+    if (!!this.props.loggedInUser.id === false) {
+      alert("Please sign in or register.")
+    }
+
   }
 
   impressionHandler = () => {
@@ -126,7 +130,7 @@ class ExhibitionProfile extends Component {
               <div className='button-container'>
 
                   <button onClick={this.clickHandler} className='interested-button'>
-                    INTERESTED { !!isInterested ? "✓" : null}
+                    INTERESTED { !!isInterested && this.props.loggedInUser.id ? "✓" : null}
                   </button>
 
               </div>
