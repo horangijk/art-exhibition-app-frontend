@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 // import ExhibitionProfile from '../Containers/ExhibitionProfile'
-// import { Card } from 'rebass'
 import '../App.css';
 
 import { showExhibitionInfo } from '../Redux/actions.js'
