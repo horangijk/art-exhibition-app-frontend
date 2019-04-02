@@ -53,7 +53,7 @@ class ExhibitionProfile extends Component {
         }
       }
     }
-
+    
   }
 
   impressionHandler = () => {
