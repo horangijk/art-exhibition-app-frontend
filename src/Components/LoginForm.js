@@ -23,7 +23,7 @@ class LoginForm extends Component {
     let currentUser = this.state
     this.props.getCurrentUser(currentUser)
 
-    // return <Redirect to={`/users/${this.props.loggedInUser.id}`}/>
+    return <Redirect to={`/users/${this.props.loggedInUser.id}`}/>
 
   }
 

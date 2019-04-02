@@ -79,19 +79,28 @@ class App extends Component {
     this.setState({
       searchTerm: event.target.value,
       searchedExhibitions: searchedExhibitions,
-      inputType: 'search'
+      inputType: 'search',
+      checkedBoxes: []
     })
   }
 
   signOutHandler = () => {
     localStorage.clear()
+    this.setState({
+      // searchedExhibitions: this.props.exhibitions,
+      // checkedExhibitions: this.props.exhibitions,
+      searchTerm: '',
+      inputType: '',
+      checkedBoxes: []
+    })
+
     this.props.logOutUser()
   }
 
   clearInputHandler = () => {
     this.setState({
-      searchedExhibitions: this.props.exhibitions,
-      checkedExhibitions: this.props.exhibitions,
+      // searchedExhibitions: this.props.exhibitions,
+      // checkedExhibitions: this.props.exhibitions,
       searchTerm: '',
       inputType: '',
       checkedBoxes: []
@@ -114,10 +123,10 @@ class App extends Component {
                   }
                   {
                     !!this.props.loggedInUser.id
-                    ? <Link to='/' className='navbar-options' onClick={this.signOutHandler} onClick={this.clearInputHandler}>SIGN OUT</Link>
+                    ? <Link to='/' className='navbar-options' onClick={this.signOutHandler}>SIGN OUT</Link>
                     : <Link to='/register' className='navbar-options' onClick={this.clearInputHandler}>REGISTER</Link>
                   }
-                  <Link to='/index' id='index-header'>INDEX</Link>
+                  <Link to='/index' id='index-header' onClick={this.clearInputHandler}>INDEX</Link>
                 </div>
             </div>
 

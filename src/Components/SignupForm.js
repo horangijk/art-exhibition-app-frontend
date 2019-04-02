@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createUser } from '../Redux/actions'
+import { createUser, getCurrentUserProfile } from '../Redux/actions'
 import { Redirect } from 'react-router-dom'
 // import reducer from '../Redux/reducer.js'
 
@@ -23,15 +23,16 @@ class SignupForm extends Component {
     event.preventDefault()
     const newUser = this.state
     this.props.createUser(newUser)
-    return <Redirect to='/'/>
+
+    const currentUser = {email: this.state.email, password: this.state.password}
+    this.props.getCurrentUserProfile(currentUser)
+
   }
 
-  // if (!!localStorage.token){
-    //   localStorage.clear()
-    //   return <Redirect to='/'/>
-    // }
   render() {
-
+    if (!!this.props.loggedInUser.id){
+        return <Redirect to={`/users/${this.props.loggedInUser.id}`}/>
+    }
 
     return (
       <div className='login-container'>
@@ -57,7 +58,8 @@ class SignupForm extends Component {
             <label>Hometown</label>
             <input type="text" name="home_neighborhood" value={this.state.home_neighborhood} onChange={this.changeHandler}/>
             <br/>
-            <input type="submit" className="form-submit"/>
+            <input type="submit" className="form-submit" />
+            }}/>
           </form>
         </div>
 
@@ -70,17 +72,18 @@ class SignupForm extends Component {
 }
 
 
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.user
-//   }
-// }
-//
+const mapStateToProps = (state) => {
+  return {
+    loggedInUser: state.loggedInUser
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    createUser: (userObj) => dispatch(createUser(userObj))
+    createUser: (userObj) => dispatch(createUser(userObj)),
+    getCurrentUserProfile: (userObj) => dispatch(getCurrentUserProfile(userObj))
   }
 }
 
 
-export default connect( null, mapDispatchToProps )(SignupForm)
+export default connect( mapStateToProps, mapDispatchToProps )(SignupForm)
