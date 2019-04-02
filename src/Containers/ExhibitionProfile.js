@@ -53,7 +53,15 @@ class ExhibitionProfile extends Component {
         }
       }
     }
+<<<<<<< HEAD
     
+=======
+
+    if (!!this.props.loggedInUser.id === false) {
+      alert("Please sign in or register.")
+    }
+
+>>>>>>> master
   }
 
   impressionHandler = () => {
@@ -126,7 +134,7 @@ class ExhibitionProfile extends Component {
               <div className='button-container'>
 
                   <button onClick={this.clickHandler} className='interested-button'>
-                    INTERESTED { !!isInterested ? "✓" : null}
+                    INTERESTED { !!isInterested && this.props.loggedInUser.id ? "✓" : null}
                   </button>
 
               </div>
@@ -148,8 +156,10 @@ class ExhibitionProfile extends Component {
                 <label>OPENING HOUR:</label>
                 <p className='exhibition-detail'>{
                   this.props.exhibition.venue_openinghour < 12
-                  ? `${this.props.exhibition.venue_openinghour} AM`
-                  : `${this.props.exhibition.venue_openinghour - 12} PM`
+                  ? `${this.props.exhibition.venue_openinghour} AM` :
+                  this.props.exhibition.venue_openinghour > 12
+                  ? `${this.props.exhibition.venue_openinghour - 12} PM`
+                  : '12 PM'
                 }</p>
                 <label>CLOSING HOUR:</label>
                 <p className='exhibition-detail'>{

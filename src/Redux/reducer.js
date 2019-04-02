@@ -64,9 +64,12 @@ const reducer = (state = initialState, action) => {
       return {...state, usersSavedExhibitions: newArr}
     }
 
-
     case "LOAD_SAVED_EXHIBITIONS": {
       return {...state, usersSavedExhibitions: action.payload}
+    }
+
+    case "LOG_OUT_USER": {
+      return {...state, loggedInUser: action.payload}
     }
 
     default:

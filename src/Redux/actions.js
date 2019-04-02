@@ -19,6 +19,34 @@ export const getExhibitions = () => dispatch => {
 
 
 // USERS ----------------------------------------
+const signInUser = (user) => ({
+  type: "SIGN_IN_USER",
+  payload: user
+})
+
+export function getCurrentUser(userObj) {
+  return (dispatch) => {
+    // let token = localStorage.token
+    return fetch('http://localhost:3000/api/v1/login',{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+
+      },
+      body: JSON.stringify({user: userObj})
+    })
+    .then(res => res.json())
+    .then(data => {
+      localStorage.setItem("token", data.jwt);
+      dispatch(signInUser(data.user));
+
+    })
+    .catch(console.error)
+  }
+}
+
+
 const addUser = (user) => ({
   type: "ADD_USER",
   payload: user
@@ -39,36 +67,9 @@ export function createUser(userObj) {
       .then(user => {
         localStorage.setItem("token", user.jwt);
         dispatch(addUser(user));
-        // dispatch(signInUser(user));
+        dispatch(signInUser(user.user));
       })
       .catch(console.error)
-  }
-}
-
-
-const signInUser = (user) => ({
-  type: "SIGN_IN_USER",
-  payload: user
-})
-
-export function getCurrentUser(userObj) {
-  return (dispatch) => {
-    // let token = localStorage.token
-    return fetch('http://localhost:3000/api/v1/login',{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({user: userObj})
-    })
-    .then(res => res.json())
-    .then(data => {
-      localStorage.setItem("token", data.jwt);
-      dispatch(signInUser(data.user));
-
-    })
-    .catch(console.error)
   }
 }
 
@@ -154,9 +155,6 @@ export function postToSavedExhibition(obj) {
 }
 
 
-// LEFT OFF HERE
-// FIX BACKGROUND IMAGE ON HOMEPAGE
-
 const loadSavedExhibitions = (exhibitions) => ({
   type: "LOAD_SAVED_EXHIBITIONS",
   payload: exhibitions
@@ -221,5 +219,16 @@ export function deleteSavedExhibition(savedExObj) {
       .then(data => {
         dispatch(removeSavedExhibition(data))
       })
+  }
+}
+
+const removeLoggedInUser = () => ({
+  type: "LOG_OUT_USER",
+  payload: {}
+})
+
+export function logOutUser() {
+  return (dispatch) => {
+    dispatch(removeLoggedInUser())
   }
 }
