@@ -1,26 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { showExhibitionInfo } from '../Redux/actions.js'
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 // import ExhibitionProfile from '../Containers/ExhibitionProfile'
 import '../App.css';
 
-import { showExhibitionInfo } from '../Redux/actions.js'
-
-
 
 class ExhibitionCard extends Component {
-
-
-// const ExhibitionCard = (props) => {
-//   let { exhibition, showExhibitionInfo } = props
-
   render() {
 
-  let exhibitionName = this.props.exhibition.name.split(' ').map(str => {
-    if (str !== "Exhibition") {
-      return str + " "
-    }
-  })
+    let exhibitionName = this.props.exhibition.name.split(' ').map(str => {
+      if (str !== "Exhibition") {
+        return str + " "
+      }
+    })
 
     return (
       <div className='card-container' onClick={() => this.props.showExhibitionInfo(this.props.exhibition)}>
@@ -49,7 +42,6 @@ const mapDispatchToProps = (dispatch) => {
     showExhibitionInfo: (exhibition) => dispatch(showExhibitionInfo(exhibition))
   }
 }
-
 
 
 export default connect( mapStateToProps, mapDispatchToProps )(ExhibitionCard)

@@ -19,7 +19,6 @@ class ExhibitionProfile extends Component {
     this.props.getUsers()
   }
 
-
   state = {
     user_id: this.props.loggedInUser.id,
     exhibition_id: this.props.selectedExhibition.id,
@@ -57,7 +56,6 @@ class ExhibitionProfile extends Component {
     if (!!this.props.loggedInUser.id === false) {
       alert("Please sign in or register.")
     }
-
   }
 
   impressionHandler = () => {
@@ -82,7 +80,6 @@ class ExhibitionProfile extends Component {
         return <ImpressionCard key={impObj.id} impressionObj={impObj} users={this.props.allUsers}/>
       })
     }
-
 
     // let imageArr
     // if (this.props.exhibition.length > 0) {
@@ -218,10 +215,8 @@ class ExhibitionProfile extends Component {
 }
 
 // <img src={this.props.exhibition.image.split(/ {"src"=>"|",|"=>"|"width"/)[7]} alt="" className='exhibition-image'/>
-// <br/>
 
 
-// from REDUCER
 const mapStateToProps = (state) => {
   return {
     exhibitions: state.exhibitions,
@@ -233,7 +228,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-// from ACTION
 const mapDispatchToProps = (dispatch) => {
   return {
     showExhibitionInfo: (exObj) => dispatch(showExhibitionInfo(exObj)),

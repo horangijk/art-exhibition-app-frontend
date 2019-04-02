@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createUser, getCurrentUserProfile } from '../Redux/actions'
 import { Redirect } from 'react-router-dom'
-// import reducer from '../Redux/reducer.js'
 
 class SignupForm extends Component {
   state = {
