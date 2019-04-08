@@ -11,8 +11,8 @@ Whether you're an art student out for inspiration or a tourist visiting for a fe
 - [Ruby on Rails](https://rubyonrails.org/)
 - [Javascript](https://www.javascript.com/)
 - [Ruby](https://www.ruby-lang.org/en/)
-- [HTML]
-- [CSS]
+- HTML
+- CSS
 
 ## Demo
 ![](placard-gify.gif)
