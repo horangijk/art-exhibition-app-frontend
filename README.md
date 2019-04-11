@@ -1,5 +1,5 @@
-## Project title
-PLACARD - The art & design community platform for staying up-to-date with current exhibitions in NYC.
+# PLACARD
+The art & design community platform for staying up-to-date with current exhibitions in NYC.
 
 ## Motivation
 Whether you're an art student out for inspiration or a tourist visiting for a few days, Placard serves as a convenient way for art/design enthusiasts to browse current exhibitions in New York City. 
