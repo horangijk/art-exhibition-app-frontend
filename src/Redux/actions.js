@@ -8,7 +8,7 @@ const loadExhibitions = (exhibitions) => ({
 
 export const getExhibitions = () => dispatch => {
   return (dispatch) => {
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions')
+    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions',{mode: 'no-cors'})
       .then(res => res.json())
       .then(data => dispatch(loadExhibitions(data)))
       .catch(console.error)
