@@ -10,7 +10,7 @@ export const getExhibitions = () => dispatch => {
   return (dispatch) => {
     return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions',{
       headers: {
-        "Access-Control-Allow-Origin": "https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions"
+        "Access-Control-Allow-Origin": *
       }
     })
       .then(res => res.json())
