@@ -107,8 +107,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.checkedBoxes);
-
     return (
       <BrowserRouter>
       <Fragment>
