@@ -11,7 +11,9 @@ export const getExhibitions = () => dispatch => {
   return (dispatch) => {
     return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions')
       .then(res => res.json())
-      .then(data => dispatch(loadExhibitions(data)))
+      .then(data => {
+        console.log(data);
+        dispatch(loadExhibitions(data)}))
       .catch(console.error)
   }
 }
