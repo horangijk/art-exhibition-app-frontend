@@ -12,6 +12,8 @@ class ExhibitionCard extends Component {
     let exhibitionName = this.props.exhibition.name.split(' ').map(str => {
       if (str !== "Exhibition") {
         return str + " "
+      } else {
+        return null
       }
     })
 
