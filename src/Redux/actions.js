@@ -7,14 +7,9 @@ const loadExhibitions = (exhibitions) => ({
 })
 
 export const getExhibitions = () => dispatch => {
+  console.log("loading exhibitions?");
   return (dispatch) => {
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions',{
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
-      }
-    })
+    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions')
       .then(res => res.json())
       .then(data => dispatch(loadExhibitions(data)))
       .catch(console.error)
