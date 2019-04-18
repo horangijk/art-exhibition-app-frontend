@@ -7,13 +7,12 @@ const loadExhibitions = (exhibitions) => ({
 })
 
 export const getExhibitions = () => dispatch => {
-  console.log("loading exhibitions?");
-  return (dispatch) => {
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions')
+  // return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/exhibitions')
       .then(res => res.json())
       .then(data => dispatch(loadExhibitions(data)))
       .catch(console.error)
-  }
+  // }
 }
 
 
@@ -24,7 +23,7 @@ const getExhibitionInfo = (exhibObj) => ({
 
 export function showExhibitionInfo(exhibObj) {
   return (dispatch) => {
-    return fetch(`https://limitless-badlands-89553.herokuapp.com/api/v1/exhibitions/${exhibObj.id}`)
+    return fetch(`http://localhost:3000/api/v1/exhibitions/${exhibObj.id}`)
       .then(res => res.json())
       .then(exhibition => {
         dispatch(getExhibitionInfo(exhibition))
@@ -40,7 +39,7 @@ const saveExhibition = (obj) => ({
 
 export function postToSavedExhibition(obj) {
   return (dispatch) => {
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/saved_exhibitions', {
+    return fetch('http://localhost:3000/api/v1/saved_exhibitions', {
       method: "POST",
       headers: {
         "Accept" : "application/json",
@@ -64,7 +63,7 @@ const loadSavedExhibitions = (exhibitions) => ({
 
 export function getSavedExhibitions(exhibitions) {
   return (dispatch) => {
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/saved_exhibitions')
+    return fetch('http://localhost:3000/api/v1/saved_exhibitions')
       .then(res => res.json())
       .then(data => {
         dispatch(loadSavedExhibitions(data))
@@ -80,7 +79,7 @@ const createImpression = (impressionObj) => ({
 
 export function postToExhibitionImpressions(impressionObj) {
   return (dispatch) => {
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/impressions', {
+    return fetch('http://localhost:3000/api/v1/impressions', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,7 +99,7 @@ const loadAllImpressions = (impressions) => ({
 
 export function getImpressions(impressions) {
   return (dispatch) => {
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/impressions')
+    return fetch('http://localhost:3000/api/v1/impressions')
       .then(res => res.json())
       .then(data => dispatch(loadAllImpressions(data)))
   }
@@ -114,7 +113,7 @@ const removeSavedExhibition = (savedExObj) => ({
 
 export function deleteSavedExhibition(savedExObj) {
   return (dispatch) => {
-    return fetch(`https://limitless-badlands-89553.herokuapp.com/api/v1/saved_exhibitions/${savedExObj.id}`, {
+    return fetch(`http://localhost:3000/api/v1/saved_exhibitions/${savedExObj.id}`, {
       method: "DELETE"
     })
       .then(res => res.json())
@@ -136,7 +135,7 @@ const signInUser = (user) => ({
 export function getCurrentUser(userObj) {
   return (dispatch) => {
     // let token = localStorage.token
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/login',{
+    return fetch('http://localhost:3000/api/v1/login',{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -164,7 +163,7 @@ const addUser = (user) => ({
 export function createUser(userObj) {
 
   return (dispatch) => {
-    return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/users',{
+    return fetch('http://localhost:3000/api/v1/users',{
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -191,7 +190,7 @@ const showUserProfile = (user) => ({
 export const getCurrentUserProfile = userObj => {
   return (dispatch) => {
     if (localStorage.token) {
-      fetch("https://limitless-badlands-89553.herokuapp.com/api/v1/profile", {
+      fetch("http://localhost:3000/api/v1/profile", {
         method: "GET",
         headers: {
           "Accept" : "application/json",
@@ -216,7 +215,7 @@ const loadUsers = (users) => ({
 })
 
 export const getUsers = () => dispatch => {
-  return fetch('https://limitless-badlands-89553.herokuapp.com/api/v1/users')
+  return fetch('http://localhost:3000/api/v1/users')
     .then(res => res.json())
     .then(data => dispatch(loadUsers(data)))
     .catch(console.error)
