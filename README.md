@@ -14,6 +14,20 @@ Whether you're an art student out for inspiration or a tourist visiting for a fe
 - HTML
 - CSS
 
+## Installation Instructions
+Once the backend server is running, run commands 
+```
+npm install && npm start
+```
+in your terminal to launch the frontend components.
+
+** Respond with "Y"  when you are prompted with
+```
+Something is already running on port 3000
+
+Would you like to run the app on another port instead? (Y/n)
+```
+
 ## Demo
 ![](placard-gify.gif)
 
