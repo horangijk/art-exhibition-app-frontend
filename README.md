@@ -14,6 +14,11 @@ Whether you're an art student out for inspiration or a tourist visiting for a fe
 - HTML
 - CSS
 
+<b>Other</b>
+- [Redux](https://redux.js.org/)
+- React Router
+- JWT authentication system
+
 ## Installation Instructions
 Once the backend server is running, run the following commands 
 ```
