@@ -15,7 +15,7 @@ Whether you're an art student out for inspiration or a tourist visiting for a fe
 - CSS
 
 ## Installation Instructions
-Once the backend server is running, run commands 
+Once the backend server is running, run the following commands 
 ```
 npm install && npm start
 ```
