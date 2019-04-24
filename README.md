@@ -4,7 +4,7 @@ The art & design community platform for staying up-to-date with current exhibiti
 ## Motivation
 Whether you're an art student out for inspiration or a tourist visiting for a few days, Placard serves as a convenient way for art/design enthusiasts to browse current exhibitions in New York City. 
 
-## Tech/Frameworks
+## Tech/Frameworks (FRONTEND)
 <b>Built with</b>
 - [React](https://reactjs.org/)
 - [Ruby on Rails](https://rubyonrails.org/)
